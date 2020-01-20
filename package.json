@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cross-env NODE_ENV=production webpack --config build/webpack.config.prod.js",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.dev.js",
-    "init": "eslint --init"
+    "init": "eslint --init",
+    "fix": "eslint --fix ./src"
   },
   "repository": {
     "type": "git",
@@ -41,6 +42,7 @@
     "stylus": "^0.54.7",
     "stylus-loader": "^3.0.2",
     "vue-loader": "^15.8.3",
+    "vue-template-compiler": "^2.6.11",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.1",
