@@ -11,11 +11,12 @@
 </template>
 
 <script>
-export default {
-
-}
 </script>
 
-<style>
-
+<style lang="stylus">
+.header {
+  padding: 10px 24px;
+  margin: 0;
+  width: 100%;
+}
 </style>
