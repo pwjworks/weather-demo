@@ -46,7 +46,11 @@ module.exports = {
     }
     ]
   },
-  resolve: {},
+  resolve: {
+    alias:{
+      'assets': path.resolve(__dirname, '../src/assets'),
+    }
+  },
   devtool: 'source-map',
   plugins: [
     new HTMLPlugin(),

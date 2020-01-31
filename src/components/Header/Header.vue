@@ -1,10 +1,10 @@
 <template>
   <div class="header">
     <div class="nav">
-      <ul class="nav-item">
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
+      <ul class="nav-ul">
+        <li class="nav-item">1</li>
+        <li class="nav-item">2</li>
+        <li class="nav-item">3</li>
       </ul>
     </div>
   </div>
@@ -14,9 +14,17 @@
 </script>
 
 <style lang="stylus">
-.header {
-  padding: 10px 24px;
-  margin: 0;
-  width: 100%;
-}
+@import "~assets/styles/variable.styl";
+.header
+  top 0
+  width 100%
+  height 60px
+  background $color-background
+  box-shadow 5px 5px 20px $color-shadow
+  z-index 10
+.nav .nav-ul
+  display flex
+  align-content center
+.nav-item
+  margin-right 20px
 </style>

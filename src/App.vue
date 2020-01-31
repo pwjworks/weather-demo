@@ -1,21 +1,29 @@
 <template>
-<div>
+<div class="app">
   <Header></Header>
-  <h1>Hello world</h1>
+  <MainPanel></MainPanel>
 </div>
-
 </template>
 
 <script>
 import Header from './components/Header/Header.vue'
+import MainPanel from './components/MainPanel/MainPanel.vue'
 
 export default {
   components: {
-    Header
+    Header,
+    MainPanel
   }
 }
 </script>
 
-<style>
-
+<style lang="stylus">
+@import "~assets/styles/index.styl"
+  .app
+    position absolute
+    display flex
+    flex-direction column
+    align-content center
+    height 100%
+    width 100%
 </style>
