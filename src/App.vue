@@ -23,7 +23,6 @@ export default {
     position absolute
     display flex
     flex-direction column
-    align-content center
     height 100%
     width 100%
 </style>

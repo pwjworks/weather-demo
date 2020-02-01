@@ -1,11 +1,14 @@
 <template>
   <div class="header">
-    <div class="nav">
-      <ul class="nav-ul">
-        <li class="nav-item">1</li>
-        <li class="nav-item">2</li>
-        <li class="nav-item">3</li>
-      </ul>
+    <div class="side-menu-container">
+      <div class="side-menu-icon">
+        <svg t="1580552638883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1131" width="30" height="30"><path d="M1024 585.142857H292.571429V438.857143h731.428571v146.285714zM0 585.142857h146.285714V438.857143H0v146.285714zM1024 73.142857H292.571429v146.285714h731.428571V73.142857zM0 219.428571h146.285714V73.142857H0v146.285714z m1024 585.142858H292.571429v146.285714h731.428571V804.571429zM0 950.857143h146.285714V804.571429H0v146.285714z" p-id="1132" fill="#ffffff"></path></svg>
+      </div>
+    </div>
+    <div class="header-title">
+      <div class="date">
+        <p>Sunday,2020</p>
+      </div>
     </div>
   </div>
 </template>
@@ -16,15 +19,26 @@
 <style lang="stylus">
 @import "~assets/styles/variable.styl";
 .header
-  top 0
+  display flex
+  flex-direction row
+  align-items center
   width 100%
-  height 60px
-  background $color-background
+  height 70px
+  background $color-background-dark
   box-shadow 5px 5px 20px $color-shadow
   z-index 10
-.nav .nav-ul
+.header-title
+  width 100%
+  height 100%
   display flex
-  align-content center
-.nav-item
-  margin-right 20px
+  align-items center
+  justify-content center
+.date p
+    position relative
+    right 30px
+    font-size 1.5em
+    color white
+    line-height 100%
+.side-menu-icon
+  margin-left 20px
 </style>
