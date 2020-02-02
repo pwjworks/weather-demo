@@ -5,7 +5,7 @@
 </div>
 </template>
 
-<script>
+<script type="text/ecmascript-6">
 import Header from './components/Header/Header.vue'
 import MainPanel from './components/MainPanel/MainPanel.vue'
 

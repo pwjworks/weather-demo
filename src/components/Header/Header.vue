@@ -2,18 +2,31 @@
   <div class="header">
     <div class="side-menu-container">
       <div class="side-menu-icon">
-        <svg t="1580552638883" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1131" width="30" height="30"><path d="M1024 585.142857H292.571429V438.857143h731.428571v146.285714zM0 585.142857h146.285714V438.857143H0v146.285714zM1024 73.142857H292.571429v146.285714h731.428571V73.142857zM0 219.428571h146.285714V73.142857H0v146.285714z m1024 585.142858H292.571429v146.285714h731.428571V804.571429zM0 950.857143h146.285714V804.571429H0v146.285714z" p-id="1132" fill="#ffffff"></path></svg>
+        <embed src="src/assets/icons/common/List.svg" type="image/svg+xml">
       </div>
     </div>
     <div class="header-title">
       <div class="date">
-        <p>Sunday,2020</p>
+        <p>{{date}}</p>
       </div>
     </div>
   </div>
 </template>
 
-<script>
+<script type="text/ecmascript-6">
+import { getMonthName, getWeekDayName } from 'utils/getDateName.js'
+
+export default {
+  data () {
+    return {
+      date: ''
+    }
+  },
+  created () {
+    var d = new Date()
+    this.date = getWeekDayName(d) + ' ,' + d.getDate() + 'th ' + getMonthName(d)
+  }
+}
 </script>
 
 <style lang="stylus">

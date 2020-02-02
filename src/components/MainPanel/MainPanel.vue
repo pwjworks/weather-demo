@@ -12,7 +12,7 @@
   </div>
 </template>
 
-<script>
+<script type="text/ecmascript-6">
 import TemperaturePanel from 'components/TemperaturePanel/TemperaturePanel.vue'
 import LocationPanel from 'components/LocationPanel/LocationPanel.vue'
 import ForecastPanel from 'components/ForecastPanel/ForecastPanel.vue'

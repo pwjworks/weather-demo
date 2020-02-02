@@ -10,8 +10,8 @@
       <div class="forecast-icon">
         <embed src="src/assets/icons/weather/Storm.svg" type="image/svg+xml" />
       </div>
-      <p>min</p>
-      <p>max</p>
+      <p>max 20</p>
+      <p>min 10</p>
     </div>
     <div class="forecast">
       <embed src="src/assets/icons/weather/Snow.svg" type="image/svg+xml" />

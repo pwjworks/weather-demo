@@ -47,10 +47,10 @@ module.exports = {
     ]
   },
   resolve: {
-    alias:{
-      'assets': path.resolve(__dirname, '../src/assets'),
-      'components': path.resolve(__dirname, '../src/components'),
-      'icons': path.resolve(__dirname, '../src/assets/icons'),
+    alias: {
+      assets: path.resolve(__dirname, '../src/assets'),
+      components: path.resolve(__dirname, '../src/components'),
+      utils: path.resolve(__dirname, '../src/utils')
     }
   },
   devtool: 'source-map',
