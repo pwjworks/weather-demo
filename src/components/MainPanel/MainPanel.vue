@@ -2,30 +2,28 @@
   <div class="container">
     <div class="weather-card">
       <div class="weather-info">
-        <div class="temperature-content">
-          <div class="temperature">
-            <p>12</p>
-          </div>
-          <div class="wh-container">
-            <div class="wind-meter">
-              <p class="info">wind</p>
-              <p class="info">12km/h</p>
-            </div>
-            <div class="humidity">
-              <p class="info">humidity</p>
-              <p class="info">84%</p>
-            </div>
-          </div>
-        </div>
-        <div class="location-content">
-          <p>France</p>
-        </div>
+          <TemperaturePanel></TemperaturePanel>
+          <LocationPanel></LocationPanel>
+      </div>
+      <div class="forcast-info">
+        <ForecastPanel></ForecastPanel>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import TemperaturePanel from 'components/TemperaturePanel/TemperaturePanel.vue'
+import LocationPanel from 'components/LocationPanel/LocationPanel.vue'
+import ForecastPanel from 'components/ForecastPanel/ForecastPanel.vue'
+
+export default {
+  components: {
+    TemperaturePanel,
+    LocationPanel,
+    ForecastPanel
+  }
+}
 </script>
 
 <style lang="stylus">
@@ -54,53 +52,10 @@
     height 50%
     border-radius 25px 25px 0 0
     background grey
-  .temperature-content
+  .forcast-info
     display flex
-    flex-direction column
-    align-content center
-    justify-content center
-    flex-wrap wrap
-    position absolute
-    left 7%
-    width 300px
-    height 250px
-  .temperature
-    width 300px
-    height 100px
-    p
-      font-size 100px
-  .wh-container
-    display flex
-    flex-direction row
-    height 80px
-    margin-top 30px
-  .wind-meter
-    display flex
-    justify-content center
-    flex-direction column
-    width 50%
-  .humidity
-    display flex
-    justify-content center
-    flex-direction column
-    width 50%
-    border-left  2px solid white
-  .info
-      font-size 20px
-      &:before
-        display inline-block
-        content ""
-        height 100%
-        vertical-align middle
-  .location-content
-    position absolute
-    display flex
-    justify-content center
-    left 60%
-    width 300px
-    height 225px
-    p
-      position absolute
-      top 10%
-      font-size 2em
+    align-items center
+    width 100%
+    height 50%
+    border-radius 0 0 25px 25px
 </style>
