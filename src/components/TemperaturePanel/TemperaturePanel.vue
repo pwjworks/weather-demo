@@ -1,7 +1,7 @@
 <template>
   <div class="temperature-content">
     <div class="temperature">
-      <p>12</p>
+      <p>{{tem}}°</p>
     </div>
     <div class="wh-container">
       <div class="wind-meter">
@@ -10,13 +10,38 @@
       </div>
       <div class="humidity">
         <p class="info">humidity</p>
-        <p class="info">84%</p>
+        <p class="info">{{humidity}}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+import { getLiveWeather } from 'api/getLiveWeather'
+import { ERR_OK } from 'api/config'
+
+export default {
+  data () {
+    return {
+      city: '广州',
+      tem: undefined,
+      humidity: ''
+    }
+  },
+  created () {
+    this.__getLiveWeather(this.city)
+  },
+  methods: {
+    __getLiveWeather: function (city) {
+      getLiveWeather(city).then((res) => {
+        if (res.data.err_code === ERR_OK) {
+          this.tem = res.data.weather.tem
+          this.humidity = res.data.weather.humidity
+        }
+      })
+    }
+  }
+}
 </script>
 
 <style lang="stylus">

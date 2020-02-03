@@ -9,7 +9,6 @@ function param (data) {
     key += `${value}`
   }
   url += `&sign=${getMD5Sign(key)}`
-  console.log(url)
   return url ? url.substr(1) : ''
 }
 

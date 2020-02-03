@@ -1,7 +1,7 @@
 export const commonParams = {
-  app_key: 'F3A4E792DCFE446D889CB97357310B1B'
+  app_key: 'F3A4E792DCFE446D889CB97357310B1B',
+  callback: 'jsonpCallback'
 }
 export const options = {
-  param: 'jsonpCallback'
 }
-export const ERR_OK = 200
+export const ERR_OK = 0

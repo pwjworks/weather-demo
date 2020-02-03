@@ -33,23 +33,6 @@
 </template>
 
 <script type="text/ecmascript-6">
-import { getLiveWeather } from 'api/getLiveWeather'
-
-export default {
-  data () {
-    return {
-      city: '广州'
-    }
-  },
-  created () {
-    this.__getLiveWeather(this.city)
-  },
-  methods: {
-    __getLiveWeather: function (city) {
-      getLiveWeather(city)
-    }
-  }
-}
 </script>
 
 <style lang="stylus">
