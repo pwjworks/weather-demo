@@ -5,7 +5,8 @@
     </div>
     <div class="forecast">
       <div class="forecast-date">
-        <p>星期二</p>
+        <p>TUE
+        </p>
       </div>
       <div class="forecast-icon">
         <embed src="src/assets/icons/weather/Storm.svg" type="image/svg+xml" />
@@ -31,7 +32,24 @@
   </div>
 </template>
 
-<script>
+<script type="text/ecmascript-6">
+import { getLiveWeather } from 'api/getLiveWeather'
+
+export default {
+  data () {
+    return {
+      city: '广州'
+    }
+  },
+  created () {
+    this.__getLiveWeather(this.city)
+  },
+  methods: {
+    __getLiveWeather: function (city) {
+      getLiveWeather(city)
+    }
+  }
+}
 </script>
 
 <style lang="stylus">

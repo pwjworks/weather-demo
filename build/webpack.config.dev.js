@@ -1,8 +1,10 @@
 'use strict'
 
+const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const baseConfig = require('./webpack.config.common')
+const Dotenv = require('dotenv-webpack')
 
 const devServer = {
   port: 8000,
@@ -42,6 +44,9 @@ module.exports = merge(baseConfig, {
   devServer,
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin(),
+    new Dotenv({
+      path: path.join(__dirname, '../.env/.env')
+    })
   ]
 })

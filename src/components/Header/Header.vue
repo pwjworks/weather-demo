@@ -7,24 +7,24 @@
     </div>
     <div class="header-title">
       <div class="date">
-        <p>{{date}}</p>
+        <p>{{title}}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-import { getMonthName, getWeekDayName } from 'utils/getDateName.js'
+import { getMonthName, getWeekDayName } from 'utils/getDateName'
 
 export default {
   data () {
     return {
-      date: ''
+      title: ''
     }
   },
   created () {
     var d = new Date()
-    this.date = getWeekDayName(d) + ' ,' + d.getDate() + 'th ' + getMonthName(d)
+    this.title = getWeekDayName(d) + ' ,' + d.getDate() + 'th ' + getMonthName(d)
   }
 }
 </script>
