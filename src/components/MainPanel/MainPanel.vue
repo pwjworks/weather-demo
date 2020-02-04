@@ -40,7 +40,7 @@ export default {
     position absolute
     width 850px
     height 600px
-    box-shadow 0 0 15px $color-shadow-grey;
+    box-shadow 0 0 20px $color-shadow-grey
     background white
     border-radius 25px
   .weather-info
@@ -49,9 +49,10 @@ export default {
     align-items center
     justify-content space-around
     width 100%
-    height 50%
+    height 55%
+    box-shadow 0px 2px 15px $color-shadow-grey
     border-radius 25px 25px 0 0
-    background grey
+    background url('~assets/images/background.png')
   .forcast-info
     display flex
     align-items center

@@ -5,8 +5,8 @@
     </div>
     <div class="wh-container">
       <div class="wind-meter">
-        <p class="info">wind</p>
-        <p class="info">12km/h</p>
+        <p class="info">pm2.5</p>
+        <p class="info">{{pm2_5}}</p>
       </div>
       <div class="humidity">
         <p class="info">humidity</p>
@@ -19,32 +19,49 @@
 <script type="text/ecmascript-6">
 import { getLiveWeather } from 'api/getLiveWeather'
 import { ERR_OK } from 'api/config'
+import { mapState, mapMutations } from 'vuex'
 
 export default {
   data () {
     return {
-      city: '广州',
       tem: undefined,
-      humidity: ''
+      humidity: '',
+      pm2_5: undefined
     }
-  },
-  created () {
-    this.__getLiveWeather(this.city)
   },
   methods: {
     __getLiveWeather: function (city) {
       getLiveWeather(city).then((res) => {
         if (res.data.err_code === ERR_OK) {
-          this.tem = res.data.weather.tem
           this.humidity = res.data.weather.humidity
+          this.tem = res.data.weather.tem
+          this.pm2_5 = res.data.weather.air_pm25
+          this.updateTemWeather({
+            liveTem: res.data.weather.tem,
+            LiveWeather: res.data.weather.weather
+          })
         }
       })
+    },
+    ...mapMutations(['updateTemWeather'])
+  },
+  computed: {
+    ...mapState({
+      city: state => state.city,
+      liveWeather: state => state.liveWeather
+    })
+  },
+  watch: {
+    city: function (newCity, oldCity) {
+      var index = newCity.indexOf('市')
+      this.__getLiveWeather(newCity.substr(0, index === -1 ? newCity.length : index))
     }
   }
 }
 </script>
 
 <style lang="stylus">
+@import '~assets/styles/variable.styl';
   .temperature-content
     display flex
     flex-direction column
@@ -59,7 +76,7 @@ export default {
     width 300px
     height 100px
     p
-      font-size 100px
+      font-size $font-size-large-x
   .wh-container
     display flex
     flex-direction row

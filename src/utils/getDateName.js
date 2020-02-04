@@ -26,3 +26,16 @@ export function getWeekDayName (date) {
   weekday[6] = 'Saturday'
   return weekday[date.getDay()]
 }
+
+export function getWeekDayEnName (day) {
+  var weekday = new Array(7)
+
+  weekday['星期一'] = 'MON'
+  weekday['星期二'] = 'TUE'
+  weekday['星期三'] = 'WED'
+  weekday['星期四'] = 'THU'
+  weekday['星期五'] = 'FRI'
+  weekday['星期六'] = 'SAT'
+  weekday['星期日'] = 'SUN'
+  return weekday[day]
+}

@@ -1,6 +1,5 @@
 export const commonParams = {
-  app_key: 'F3A4E792DCFE446D889CB97357310B1B',
-  callback: 'jsonpCallback'
+  app_key: 'F3A4E792DCFE446D889CB97357310B1B'
 }
 export const options = {
 }

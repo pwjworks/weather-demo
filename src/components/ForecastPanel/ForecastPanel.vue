@@ -1,38 +1,52 @@
 <template>
   <div class="panel">
-    <div class="forecast">
-      <embed src="src/assets/icons/weather/Rain.svg" type="image/svg+xml" />
-    </div>
-    <div class="forecast">
-      <div class="forecast-date">
-        <p>TUE
-        </p>
-      </div>
-      <div class="forecast-icon">
-        <embed src="src/assets/icons/weather/Storm.svg" type="image/svg+xml" />
-      </div>
-      <p>max 20</p>
-      <p>min 10</p>
-    </div>
-    <div class="forecast">
-      <embed src="src/assets/icons/weather/Snow.svg" type="image/svg+xml" />
-    </div>
-    <div class="forecast">
-      <embed src="src/assets/icons/weather/Cloudy.svg" type="image/svg+xml" />
-    </div>
-    <div class="forecast">
-      <embed src="src/assets/icons/weather/Sunny.svg" type="image/svg+xml" />
-    </div>
-    <div class="forecast">
-      <embed src="src/assets/icons/weather/Windy.svg" type="image/svg+xml" />
-    </div>
-    <div class="forecast">
-      <embed src="src/assets/icons/weather/Drizzle.svg" type="image/svg+xml" />
-    </div>
+    <ForecastInfo v-for="(weather,index) in weekWeather"
+    :forecastObj='weather'
+    :max='weather.tem1'
+    :min='weather.tem2'
+    :weekday='weather.week'
+    :wea_img='weather.wea_img'
+    :key="index"
+    ></ForecastInfo>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+import { ERR_OK } from 'api/config'
+import { getWeatherForecast } from 'api/getWeatherForecast'
+import { mapState } from 'vuex'
+import ForecastInfo from 'components/ForecastInfo/ForecastInfo.vue'
+
+export default {
+  components: {
+    ForecastInfo
+  },
+  data () {
+    return {
+      weekWeather: []
+    }
+  },
+  methods: {
+    __getWeatherForecast (city) {
+      getWeatherForecast(city).then((res) => {
+        if (res.data.err_code === ERR_OK) {
+          this.weekWeather = res.data.weather
+        }
+      })
+    }
+  },
+  computed: {
+    ...mapState({
+      city: state => state.city
+    })
+  },
+  watch: {
+    city: function (newCity, oldCity) {
+      var index = newCity.indexOf('市')
+      this.__getWeatherForecast(newCity.substr(0, index === -1 ? newCity.length : index))
+    }
+  }
+}
 </script>
 
 <style lang="stylus">
@@ -42,7 +56,7 @@
   align-items center
   justify-content center
   width 100%
-  height 80%
+  height 100%
 }
 
 .forecast
@@ -50,8 +64,8 @@
   align-items center
   justify-content center
   flex-direction column
-  height 200px
-  width 120px
+  height 100%
+  width 100%
 .forecast-date
   margin-bottom 20px
 .forecast-temperature
