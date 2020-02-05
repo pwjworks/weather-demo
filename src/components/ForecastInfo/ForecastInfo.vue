@@ -4,7 +4,7 @@
       <p>{{weekdayEN}}</p>
     </div>
     <div class="forecast-icon">
-      <embed src="src/assets/icons/weather/Storm.svg" type="image/svg+xml" />
+      <embed :src="imgUrl" type="image/svg+xml" />
     </div>
     <div class="tem-container">
       <p class="max"><span>Max</span>  {{max}}</p>
@@ -25,15 +25,20 @@ export default {
   },
   data () {
     return {
-      weekdayEN: ''
+      weekdayEN: '',
+      imgUrl: ''
     }
-  },
-  computed: {
   },
   watch: {
     weekday: {
       handler: function (newWeekday, oldWeekday) {
         this.weekdayEN = getWeekDayEnName(newWeekday)
+      },
+      immediate: true
+    },
+    wea_img: {
+      handler: function (newUrl, oldUrl) {
+        this.imgUrl = 'src/assets/icons/weather/' + this.wea_img + '.svg'
       },
       immediate: true
     }
@@ -46,14 +51,18 @@ export default {
   .forecast-date
     margin-bottom 30px
     p
-      letter-spacing 10px
+      letter-spacing 7px
       font-size $font-size-medium-x
+      font-weight bold
+      color rgb(57,67,122)
   .tem-container
     margin-top 30px
   .max
     span
-      color red
+      color rgb(57,67,122)
+      font-weight bold
   .min
     span
-      color green
+      color rgb(57,67,122)
+      font-weight bold
 </style>

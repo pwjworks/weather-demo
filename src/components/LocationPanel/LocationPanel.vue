@@ -51,4 +51,5 @@ export default {
       font-size 2em
   .city
     letter-spacing 20px
+    border-bottom  solid 3px white
 </style>

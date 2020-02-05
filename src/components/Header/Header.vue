@@ -36,7 +36,7 @@ export default {
   flex-direction row
   align-items center
   width 100%
-  height 70px
+  height 60px
   background $color-background-dark
   box-shadow 5px 5px 20px $color-shadow
   z-index 10

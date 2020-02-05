@@ -38,8 +38,8 @@ export default {
     z-index 9
   .weather-card
     position absolute
-    width 850px
-    height 600px
+    width 1000px
+    height 680px
     box-shadow 0 0 20px $color-shadow-grey
     background white
     border-radius 25px
@@ -52,11 +52,13 @@ export default {
     height 55%
     box-shadow 0px 2px 15px $color-shadow-grey
     border-radius 25px 25px 0 0
-    background url('~assets/images/background.png')
+    background linear-gradient(rgb(102,102,173), rgb(255,186,186))
+    color white
   .forcast-info
     display flex
     align-items center
-    width 100%
-    height 50%
+    padding-left 35px
+    padding-right 35px
+    height 45%
     border-radius 0 0 25px 25px
 </style>
