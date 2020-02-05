@@ -32,7 +32,7 @@ export default {
     display flex
     align-items center
     justify-content center
-    background-image linear-gradient(rgb(203,101,154), rgb(87,94,246))
+    background-image linear-gradient(rgb(255,213,159), rgb(255,171,159))
     width 100%
     height 100%
     z-index 9

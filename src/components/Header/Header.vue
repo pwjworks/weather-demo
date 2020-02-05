@@ -37,7 +37,7 @@ export default {
   align-items center
   width 100%
   height 60px
-  background $color-background-dark
+  background $color-background-light
   box-shadow 5px 5px 20px $color-shadow
   z-index 10
 .header-title
@@ -50,7 +50,6 @@ export default {
     position relative
     right 30px
     font-size 1.5em
-    color white
     line-height 100%
 .side-menu-icon
   margin-left 20px

@@ -7,8 +7,7 @@
       <embed :src="imgUrl" type="image/svg+xml" />
     </div>
     <div class="tem-container">
-      <p class="max"><span>Max</span>  {{max}}</p>
-      <p class="min"><span>Min</span>  {{min}}</p>
+      <p class="tem">{{tem}}</p>
     </div>
   </div>
 </template>
@@ -20,6 +19,7 @@ export default {
     forecastObj: Object,
     max: String,
     min: String,
+    tem: String,
     weekday: String,
     wea_img: String
   },
@@ -54,15 +54,10 @@ export default {
       letter-spacing 7px
       font-size $font-size-medium-x
       font-weight bold
-      color rgb(57,67,122)
+      color $color-font-forecast
   .tem-container
     margin-top 30px
-  .max
-    span
-      color rgb(57,67,122)
-      font-weight bold
-  .min
-    span
-      color rgb(57,67,122)
-      font-weight bold
+  .tem
+    font-size $font-size-medium
+    color $color-font-forecast
 </style>

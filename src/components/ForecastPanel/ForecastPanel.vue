@@ -6,6 +6,7 @@
     :min='weather.tem2'
     :weekday='weather.week'
     :wea_img='weather.wea_img'
+    :tem='weather.tem'
     :key="index"
     ></ForecastInfo>
   </div>
