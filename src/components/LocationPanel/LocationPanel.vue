@@ -1,7 +1,7 @@
 <template>
   <div class="location-content">
-    <p class="city">{{city}}</p>
-    <p>{{liveWeather}}</p>
+    <p id="city">{{city}}</p>
+    <p id="liveWeather">{{liveWeather}}</p>
   </div>
 </template>
 
@@ -49,7 +49,10 @@ export default {
     p
       margin-top 20px
       font-size 2em
-  .city
+  #city
     letter-spacing 20px
     border-bottom  solid 3px white
+  #liveWeather
+    position relative
+    top 30px
 </style>

@@ -1,5 +1,6 @@
 <template>
 <div class="app">
+  <Sidebar></Sidebar>
   <Header></Header>
   <MainPanel></MainPanel>
 </div>
@@ -8,11 +9,13 @@
 <script type="text/ecmascript-6">
 import Header from './components/Header/Header.vue'
 import MainPanel from './components/MainPanel/MainPanel.vue'
+import Sidebar from 'components/Sidebar/Sidebar.vue'
 
 export default {
   components: {
     Header,
-    MainPanel
+    MainPanel,
+    Sidebar
   }
 }
 </script>

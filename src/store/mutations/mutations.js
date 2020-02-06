@@ -5,5 +5,8 @@ export default {
   updateTemWeather (state, { liveTem, LiveWeather }) {
     state.liveTem = liveTem
     state.liveWeather = LiveWeather
+  },
+  updateSidebarActive (state, active) {
+    state.sidebarActive = active
   }
 }
