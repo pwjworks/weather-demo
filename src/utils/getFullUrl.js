@@ -1,5 +1,11 @@
 import getMD5Sign from 'utils/getMD5Sign'
 
+/**
+ *拼接url参数
+ *
+ * @param {*} data
+ * @returns
+ */
 function param (data) {
   let url = ''
   let key = ''
@@ -12,6 +18,14 @@ function param (data) {
   return url ? url.substr(1) : ''
 }
 
+/**
+ *返回url（缺少sign参数）
+ *
+ * @export
+ * @param {*} url
+ * @param {*} data
+ * @returns
+ */
 export default function getFullUrl (url, data) {
   url += (url.indexOf('?') < 0 ? '?' : '&') + param(data)
   return url

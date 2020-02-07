@@ -2,11 +2,11 @@
   <div class="container">
     <div class="weather-card">
       <div class="weather-info">
-          <TemperaturePanel></TemperaturePanel>
-          <LocationPanel></LocationPanel>
+          <temperature-panel></temperature-panel>
+          <location-panel></location-panel>
       </div>
       <div class="forcast-info">
-        <ForecastPanel></ForecastPanel>
+        <forecast-panel></forecast-panel>
       </div>
     </div>
   </div>
@@ -27,7 +27,7 @@ export default {
 </script>
 
 <style lang="stylus">
-@import "~assets/styles/variable.styl";
+@import '~assets/styles/variable.styl';
   .container
     display flex
     align-items center

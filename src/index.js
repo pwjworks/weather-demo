@@ -2,14 +2,18 @@ import Vue from 'vue'
 import vuex from 'vuex'
 import App from './App.vue'
 import createStore from './store/store'
+import createRouter from './config/router'
+import VueRouter from 'vue-router'
+import 'assets/styles/index.styl'
 
 Vue.use(vuex)
+Vue.use(VueRouter)
 
+const router = createRouter()
 const store = createStore()
-const root = document.createElement('div')
-document.body.appendChild(root)
 /* eslint-disable no-new */
 new Vue({
+  router,
   store,
   render: h => h(App)
-}).$mount(root)
+}).$mount('#root')

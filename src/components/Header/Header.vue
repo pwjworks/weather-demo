@@ -42,14 +42,12 @@ export default {
 </script>
 
 <style lang="stylus">
-@import "~assets/styles/variable.styl";
 .header
   display flex
   flex-direction row
   align-items center
   width 100%
   height 60px
-  box-shadow 5px 5px 20px $color-shadow
 .header-title
   width 100%
   height 100%

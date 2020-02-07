@@ -61,6 +61,7 @@
     "koa": "^2.11.0",
     "koa-router": "^8.0.7",
     "vue": "^2.6.11",
+    "vue-router": "^3.1.5",
     "vue-server-renderer": "^2.6.11",
     "vuex": "^3.1.2"
   }

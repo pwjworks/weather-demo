@@ -1,3 +1,10 @@
+/**
+ *获得日期全称
+ *
+ * @export
+ * @param {*} date
+ * @returns
+ */
 export function getMonthName (date) {
   var month = new Array(12)
   month[0] = 'January'
@@ -15,6 +22,13 @@ export function getMonthName (date) {
   return month[date.getMonth()]
 }
 
+/**
+ *获得星期全称
+ *
+ * @export
+ * @param {*} date
+ * @returns
+ */
 export function getWeekDayName (date) {
   var weekday = new Array(7)
   weekday[0] = 'Sunday'
@@ -27,6 +41,13 @@ export function getWeekDayName (date) {
   return weekday[date.getDay()]
 }
 
+/**
+ *获得星期的英文简称
+ *
+ * @export
+ * @param {*} day
+ * @returns
+ */
 export function getWeekDayEnName (day) {
   var weekday = new Array(7)
 

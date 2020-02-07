@@ -56,7 +56,9 @@ module.exports = {
   },
   devtool: 'source-map',
   plugins: [
-    new HTMLPlugin(),
+    new HTMLPlugin({
+      template: path.resolve(__dirname, './template.html')
+    }),
     new VueLoaderPlugin(),
     new CleanWebpackPlugin()
   ]

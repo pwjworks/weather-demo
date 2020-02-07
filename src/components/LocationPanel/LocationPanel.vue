@@ -37,7 +37,6 @@ export default {
 </script>
 
 <style lang="stylus">
-@import '~assets/styles/variable.styl';
   .location-content
     position absolute
     display flex
