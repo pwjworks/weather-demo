@@ -1,3 +1,9 @@
+/*
+ * @Author: pwjworks
+ * @Date: 2020-02-08 02:47:35
+ * @Last Modified by:   pwjworks
+ * @Last Modified time: 2020-02-08 02:47:35
+ */
 import Router from 'vue-router'
 
 import routes from './routes'

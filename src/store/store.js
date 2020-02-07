@@ -1,3 +1,9 @@
+/*
+ * @Author: pwjworks
+ * @Date: 2020-02-08 02:48:00
+ * @Last Modified by:   pwjworks
+ * @Last Modified time: 2020-02-08 02:48:00
+ */
 import vuex from 'vuex'
 import getters from './getters/getters'
 import mutations from './mutations/mutations'

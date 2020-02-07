@@ -1,3 +1,9 @@
+/*
+ * @Author: pwjworks
+ * @Date: 2020-02-08 02:45:56
+ * @Last Modified by:   pwjworks
+ * @Last Modified time: 2020-02-08 02:45:56
+ */
 import jsonp from 'utils/jsonp'
 import { commonParams, options } from './config'
 

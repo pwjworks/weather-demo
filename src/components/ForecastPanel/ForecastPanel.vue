@@ -1,3 +1,9 @@
+/*
+ * @Author: pwjworks
+ * @Date: 2020-02-08 02:46:34
+ * @Last Modified by:   pwjworks
+ * @Last Modified time: 2020-02-08 02:46:34
+ */
 <template>
   <div class="panel">
     <ForecastInfo v-for="(weather,index) in weekWeather"

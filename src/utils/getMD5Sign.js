@@ -1,3 +1,9 @@
+/*
+ * @Author: pwjworks
+ * @Date: 2020-02-08 02:48:20
+ * @Last Modified by:   pwjworks
+ * @Last Modified time: 2020-02-08 02:48:20
+ */
 import jsmd5 from 'js-md5'
 
 /**

@@ -1,3 +1,9 @@
+/*
+ * @Author: pwjworks
+ * @Date: 2020-02-08 02:48:14
+ * @Last Modified by:   pwjworks
+ * @Last Modified time: 2020-02-08 02:48:14
+ */
 import getMD5Sign from 'utils/getMD5Sign'
 
 /**
