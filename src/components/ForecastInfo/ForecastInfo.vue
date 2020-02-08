@@ -1,15 +1,15 @@
 /*
  * @Author: pwjworks
  * @Date: 2020-02-08 02:46:27
- * @Last Modified by:   pwjworks
- * @Last Modified time: 2020-02-08 02:46:27
+ * @Last Modified by: pwjworks
+ * @Last Modified time: 2020-02-08 19:34:21
  */
 <template>
   <div class="forecast">
     <div class="forecast-date">
       <p>{{weekdayEN}}</p>
     </div>
-    <div class="forecast-icon">
+    <div class="forecast-icon-container">
       <embed :src="imgUrl" type="image/svg+xml" />
     </div>
     <div class="tem-container">
@@ -52,18 +52,21 @@ export default {
 }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 @import '~assets/styles/variable.styl';
   .forecast-date
-    margin-bottom 30px
+    margin-bottom 1.875rem
     p
-      letter-spacing 7px
-      font-size $font-size-medium-x
+      letter-spacing .75rem
+      font-size $font-size-medium-l
       font-weight bold
       color $color-font-forecast
   .tem-container
-    margin-top 30px
+    margin-top 1.875rem
   .tem
     font-size $font-size-medium
     color $color-font-forecast
+  .forecast-icon-container
+    width 4rem
+    height 3.75rem
 </style>

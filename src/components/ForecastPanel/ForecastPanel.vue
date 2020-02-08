@@ -56,7 +56,7 @@ export default {
 }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 .panel {
   display flex
   flex-direction row
@@ -74,7 +74,7 @@ export default {
   height 100%
   width 100%
 .forecast-date
-  margin-bottom 20px
+  margin-bottom 1.25rem
 .forecast-temperature
   display flex
   align-content center

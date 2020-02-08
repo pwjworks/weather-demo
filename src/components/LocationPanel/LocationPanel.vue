@@ -42,22 +42,27 @@ export default {
 }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
   .location-content
     position absolute
     display flex
     flex-direction column
     justify-content center
     left 60%
-    width 300px
-    height 225px
+    width 18.75rem
+    height 14rem
     p
-      margin-top 20px
-      font-size 2em
+      font-size 2rem
+      &:before
+        display inline-block
+        content ""
+        height 100%
+        vertical-align middle
   #city
-    letter-spacing 20px
-    border-bottom  solid 3px white
+    height 50%
+    letter-spacing 1.25rem
+    border-bottom  solid 0.1875rem white
   #liveWeather
+    height 50%
     position relative
-    top 30px
 </style>

@@ -1,8 +1,8 @@
 /*
  * @Author: pwjworks
  * @Date: 2020-02-08 02:46:41
- * @Last Modified by:   pwjworks
- * @Last Modified time: 2020-02-08 02:46:41
+ * @Last Modified by: pwjworks
+ * @Last Modified time: 2020-02-08 23:34:16
  */
 <template>
   <div class="header">
@@ -47,26 +47,27 @@ export default {
 }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 .header
   display flex
   flex-direction row
   align-items center
   width 100%
-  height 60px
+  height 3.75rem
 .header-title
   width 100%
   height 100%
   display flex
   align-items center
   justify-content center
+  z-index -1
 .date p
     position relative
-    right 30px
-    font-size 1.5em
+    right 1.875rem
+    font-size 1.5rem
     line-height 100%
 .side-menu-icon
-  margin-left 20px
+  margin-left 1.25rem
 .side-menu-container
-  z-index 60
+  z-index 20
 </style>

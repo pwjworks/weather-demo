@@ -1,8 +1,8 @@
 /*
  * @Author: pwjworks
  * @Date: 2020-02-08 02:47:29
- * @Last Modified by:   pwjworks
- * @Last Modified time: 2020-02-08 02:47:29
+ * @Last Modified by: pwjworks
+ * @Last Modified time: 2020-02-08 19:33:58
  */
 <template>
   <div class="temperature-content">
@@ -75,19 +75,19 @@ export default {
     justify-content center
     flex-wrap wrap
     position absolute
-    left 7%
-    width 300px
-    height 250px
+    left 4rem
+    width 18.75rem
+    height 15.625rem
   .temperature
-    width 300px
-    height 100px
+    width 18.75rem
+    height 6.25rem
     p
       font-size $font-size-large-x
   .wh-container
     display flex
     flex-direction row
-    height 80px
-    margin-top 30px
+    height 5rem
+    margin-top 1.875rem
   .wind-meter
     display flex
     justify-content center
@@ -98,9 +98,10 @@ export default {
     justify-content center
     flex-direction column
     width 50%
-    border-left  2px solid white
+    border-left  0.125rem solid white
   .info
-    font-size 20px
+    height 50%
+    font-size 1.25rem
     &:before
       display inline-block
       content ""
