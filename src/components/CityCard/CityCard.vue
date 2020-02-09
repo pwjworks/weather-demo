@@ -2,7 +2,7 @@
  * @Author: pwjworks
  * @Date: 2020-02-08 02:46:21
  * @Last Modified by: pwjworks
- * @Last Modified time: 2020-02-09 01:34:04
+ * @Last Modified time: 2020-02-09 14:38:32
  */
 <template>
   <section class="card-container">
@@ -49,8 +49,7 @@ export default {
   align-items center
   border-radius 1.25rem
   padding 2.5rem
-  margin-top 5rem
-  margin-left 5rem
+  margin 2rem
   width 17rem
   height 28rem
   background white

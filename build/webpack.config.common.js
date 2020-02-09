@@ -54,7 +54,6 @@ module.exports = {
       api: path.resolve(__dirname, '../src/api')
     }
   },
-  devtool: 'source-map',
   plugins: [
     new HTMLPlugin({
       template: path.resolve(__dirname, './template.html')

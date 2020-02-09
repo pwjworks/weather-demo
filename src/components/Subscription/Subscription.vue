@@ -2,7 +2,7 @@
  * @Author: pwjworks
  * @Date: 2020-02-08 17:51:05
  * @Last Modified by: pwjworks
- * @Last Modified time: 2020-02-09 00:13:58
+ * @Last Modified time: 2020-02-09 14:36:27
  */
 <template>
     <div class="inner-container">
@@ -35,9 +35,9 @@ export default {
     height 100%
     width 100%
   .subscription-container
-    overflow-y scroll
+    overflow-y auto
     position absolute
-    justify-content flex-start
+    justify-content center
     display flex
     flex-wrap wrap
     background linear-gradient(rgb(97,162,253), rgb(94,231,224))

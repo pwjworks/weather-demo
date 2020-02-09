@@ -2,7 +2,7 @@
  * @Author: pwjworks
  * @Date: 2020-02-08 02:36:19
  * @Last Modified by: pwjworks
- * @Last Modified time: 2020-02-09 01:56:22
+ * @Last Modified time: 2020-02-09 18:32:40
  */
 <template>
   <section class="card-container">
@@ -29,8 +29,7 @@ export default {
   justify-content center
   border-radius 1.25rem
   padding 2.5rem
-  margin-top 3rem
-  margin-left 5rem
+  margin 2rem
   width 17rem
   height 28rem
   background white
