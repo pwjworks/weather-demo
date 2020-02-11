@@ -4,6 +4,7 @@
  * @Last Modified by: pwjworks
  * @Last Modified time: 2020-02-08 23:40:50
  */
+
 <template>
     <aside class="sidebar" :class="{active:sidebarActive}">
       <section id="menu-header">
@@ -11,8 +12,12 @@
       </section>
       <div id="menu-body">
         <ul>
-          <li class="menu-item">Home</li>
-          <li class="menu-item">Add City</li>
+          <router-link to="/subscription">
+            <li class="menu-item">Subscription</li>
+          </router-link>
+          <router-link to="/addcity">
+            <li class="menu-item">Add City</li>
+          </router-link>
           <li class="menu-item">Logout</li>
         </ul>
       </div>
@@ -54,7 +59,7 @@ export default {
       top 1rem
       font-size $font-size-medium-x
   #menu-body
-    height 18.75rem
+    height 20rem
     padding 1.875rem
   .menu-item
     list-style-type none
@@ -70,4 +75,11 @@ export default {
       vertical-align middle
   .active
     transform none
+  a
+    text-decoration none
+    color black
+  .router-link-active
+    li
+      color blue
+      border-bottom solid
 </style>

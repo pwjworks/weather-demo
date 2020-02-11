@@ -2,20 +2,18 @@
  * @Author: pwjworks
  * @Date: 2020-02-08 02:47:49
  * @Last Modified by: pwjworks
- * @Last Modified time: 2020-02-09 02:01:29
+ * @Last Modified time: 2020-02-12 01:28:06
  */
 export default {
-  updateCity (state, city) {
-    state.city = city
-  },
-  updateTemWeather (state, { liveTem, LiveWeather }) {
-    state.liveTem = liveTem
-    state.liveWeather = LiveWeather
-  },
   updateSidebarActive (state, active) {
     state.sidebarActive = active
   },
-  addSubscriptionCity (state, city) {
-    state.SubscriptionCity.push(city)
+  addCity (state, city) {
+    if (state.city.indexOf(city) === -1) {
+      state.city.push(city)
+    }
+  },
+  addSubscriptionCity (state, subscription) {
+    state.subscriptionCity.push(subscription)
   }
 }

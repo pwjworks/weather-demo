@@ -4,6 +4,7 @@
  * @Last Modified by: pwjworks
  * @Last Modified time: 2020-02-09 14:42:35
  */
+ //TODO 业务逻辑
 <template>
   <div class="inner-container">
     <div class="subscription-container">
@@ -38,70 +39,69 @@
 </template>
 
 <script>
-export default {
-
-}
+export default {}
 </script>
 
 <style lang="stylus" scoped>
-@import '~assets/styles/variable.styl';
-  .inner-container
-    position relative
-    overflow-x hidden
-    overflow-y hidden
-    height 100%
+@import '~assets/styles/variable.styl'
+
+.inner-container
+  position relative
+  overflow-x hidden
+  overflow-y hidden
+  height 100%
+  width 100%
+.subscription-container
+  overflow-y auto
+  position absolute
+  justify-content center
+  align-items center
+  display flex
+  flex-wrap wrap
+  background linear-gradient(rgb(97, 162, 253), rgb(94, 231, 224))
+  width 100%
+  height 100%
+.sub-panel
+  display flex
+  align-items center
+  flex-direction column
+  box-shadow 0 0 0.25rem $color-font-forecast
+  padding 3rem
+  border-radius 1rem
+  width 28rem
+  height 36rem
+  background white
+.search
+  p
+    font-weight bold
+    color $color-font-forecast
+    font-size $font-size-large
+.select-container
+  display flex
+  flex-direction column
+  align-items center
+  width 25rem
+  height 30rem
+.select
+  margin 1rem
+  width 25rem
+  height 10rem
+  select
+    box-shadow 0 0 0.25rem $color-font-forecast
+    font-size $font-size-medium-l
+    border-radius 3rem
+    padding 0.5rem
     width 100%
-  .subscription-container
-    overflow-y auto
-    position absolute
-    justify-content center
-    align-items center
-    display flex
-    flex-wrap wrap
-    background linear-gradient(rgb(97,162,253), rgb(94,231,224))
+    height 3rem
+  p
+    font-size $font-size-medium
+    margin 2rem
+.select-btn
+  width 10rem
+  button
+    font-size $font-size-medium
+    color $color-font-forecast
     width 100%
-    height 100%
-  .sub-panel
-    display flex
-    align-items center
-    flex-direction column
-    box-shadow 0 0 .25rem $color-font-forecast
-    padding 3rem
-    border-radius 1rem
-    width 28rem
-    height 36rem
-    background white
-  .search
-    p
-      font-weight bold
-      color $color-font-forecast
-      font-size $font-size-large
-  .select-container
-    display flex
-    flex-direction column
-    align-items center
-    width 25rem
-    height 30rem
-  .select
-    margin 1rem
-    width 25rem
-    height 10rem
-    select
-      box-shadow 0 0 .25rem $color-font-forecast
-      font-size $font-size-medium-l
-      border-radius 3rem
-      padding .5rem
-      width 100%
-      height 3rem
-    p
-      font-size $font-size-medium
-      margin 2rem
-  .select-btn
-    width 10rem
-    button
-      font-size $font-size-medium
-      color $color-font-forecast
-      width 100%
-      height 3rem
-      border-radius 2rem
+    height 3rem
+    border-radius 2rem
 </style>

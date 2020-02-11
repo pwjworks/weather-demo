@@ -1,8 +1,8 @@
 /*
  * @Author: pwjworks
  * @Date: 2020-02-08 02:44:49
- * @Last Modified by:   pwjworks
- * @Last Modified time: 2020-02-08 02:44:49
+ * @Last Modified by: pwjworks
+ * @Last Modified time: 2020-02-11 02:10:13
  */
 export const commonParams = {
   app_key: 'F3A4E792DCFE446D889CB97357310B1B'
@@ -10,3 +10,5 @@ export const commonParams = {
 export const options = {
 }
 export const ERR_OK = 0
+
+export const NUM_RETRIES = 3

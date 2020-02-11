@@ -1,8 +1,8 @@
 /*
  * @Author: pwjworks
  * @Date: 2020-02-08 02:46:54
- * @Last Modified by:   pwjworks
- * @Last Modified time: 2020-02-08 02:46:54
+ * @Last Modified by: pwjworks
+ * @Last Modified time: 2020-02-11 21:23:34
  */
 <template>
   <div class="location-content">
@@ -12,32 +12,10 @@
 </template>
 
 <script type="text/ecmascript-6">
-import { getIPLocation } from 'api/getIPLocation'
-import { ERR_OK } from 'api/config'
-import { mapState, mapMutations } from 'vuex'
 export default {
-  data () {
-    return {
-    }
-  },
-  created () {
-    this.__getIPLocation()
-  },
-  methods: {
-    __getIPLocation: function () {
-      getIPLocation().then((res) => {
-        if (res.data.err_code === ERR_OK) {
-          this.updateCity(res.data.content.address_detail.city)
-        }
-      })
-    },
-    ...mapMutations(['updateCity'])
-  },
-  computed: {
-    ...mapState({
-      city: state => state.city,
-      liveWeather: state => state.liveWeather
-    })
+  props: {
+    city: String,
+    liveWeather: String
   }
 }
 </script>
