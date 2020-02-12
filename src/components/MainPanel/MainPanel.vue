@@ -2,14 +2,17 @@
  * @Author: pwjworks
  * @Date: 2020-02-08 02:47:10
  * @Last Modified by: pwjworks
- * @Last Modified time: 2020-02-12 01:25:12
+ * @Last Modified time: 2020-02-13 01:33:41
  */
 <template>
   <div class="container">
     <div class="weather-card">
       <div class="weather-info">
         <temperature-panel :tem="tem" :humidity="humidity" :pm2_5="pm2_5"></temperature-panel>
-        <location-panel :city="city" :liveWeather="liveWeather"></location-panel>
+        <location-panel
+          :city="city"
+          :liveWeather="liveWeather"
+        ></location-panel>
       </div>
       <div class="forcast-info">
         <forecast-panel :weekWeather="weekWeather"></forecast-panel>
@@ -36,7 +39,7 @@ export default {
   },
   data () {
     return {
-      city: '',
+      city: this.$route.query.city === undefined ? '' : decodeURI(this.$route.query.city),
       liveWeather: '',
       liveTem: '',
       humidity: undefined,
@@ -51,49 +54,62 @@ export default {
   },
   computed: {
     ...mapState({
-      subscriptionCity: state => state.subscriptionCity
+      subscriptionCity: state => state.subscriptionCity,
+      // 订阅过的城市
+      sub_city: state => state.city
     })
   },
   methods: {
     // 获得实时天气和天气预报
     getLiveWeather__WeatherForecast: function (city) {
-      Promise.all([getWeatherForecast(city), getLiveWeather(city)]).then((res) => {
-        // 天气预报结果
-        if (res[0].data.err_code === ERR_OK) {
-          this.weekWeather = res[0].data.weather
+      Promise.all([getWeatherForecast(city), getLiveWeather(city)]).then(
+        res => {
+          // 天气预报结果
+          if (res[0].data.err_code === ERR_OK) {
+            this.weekWeather = res[0].data.weather
+          }
+          // 实时天气结果
+          if (res[1].data.err_code === ERR_OK) {
+            this.humidity = res[1].data.weather.humidity
+            this.tem = res[1].data.weather.tem
+            this.pm2_5 = res[1].data.weather.air_pm25
+            this.liveTem = res[1].data.weather.tem
+            this.liveWeather = res[1].data.weather.weather
+          }
+          // 将数据添加到订阅数组
+          if (this.sub_city.indexOf(city) === -1) {
+            // 防止重复添加
+            this.addSubscriptionCity({
+              city: city,
+              max: this.weekWeather[1].tem1,
+              min: this.weekWeather[1].tem2,
+              liveTem: res[1].data.weather.tem,
+              weather: this.weekWeather[1].wea,
+              wea_img: this.weekWeather[1].wea_img
+            })
+            this.addCity(city)
+          }
         }
-        // 实时天气结果
-        if (res[1].data.err_code === ERR_OK) {
-          this.humidity = res[1].data.weather.humidity
-          this.tem = res[1].data.weather.tem
-          this.pm2_5 = res[1].data.weather.air_pm25
-          this.liveTem = res[1].data.weather.tem
-          this.liveWeather = res[1].data.weather.weather
-        }
-        // 将数据添加到订阅数组
-        this.addSubscriptionCity({
-          city: this.city,
-          max: this.weekWeather[0].tem1,
-          min: this.weekWeather[0].tem2,
-          liveTem: res[1].data.weather.tem,
-          weather: this.weekWeather[0].wea,
-          wea_img: this.weekWeather[0].wea_img
-        })
-      })
+      )
     },
-    // 取得数据
+    // 取得天气数据
     getWeatherData: function () {
-      getIPLocation().then(res => {
-        if (res.data.err_code === ERR_OK) {
-          this.city = res.data.content.address_detail.city
-        }
+      if (this.city !== '') {
         const index = this.city.indexOf('市')
-        const _city = this.city.substr(
-          0,
-          index === -1 ? this.city.length : index
+        this.getLiveWeather__WeatherForecast(
+          this.city.substr(0, index === -1 ? this.city.length : index)
         )
-        this.getLiveWeather__WeatherForecast(_city)
-      })
+      } else {
+        getIPLocation().then(res => {
+          if (res.data.err_code === ERR_OK) {
+            this.city = res.data.content.address_detail.city
+          }
+          const index = this.city.indexOf('市')
+          this.getLiveWeather__WeatherForecast(
+            this.city.substr(0, index === -1 ? this.city.length : index)
+          )
+        })
+      }
     },
     __getWeatherData: function () {
       let i
@@ -106,7 +122,7 @@ export default {
         }
       }
     },
-    ...mapMutations(['addSubscriptionCity'])
+    ...mapMutations(['addCity', 'addSubscriptionCity'])
   }
 }
 </script>

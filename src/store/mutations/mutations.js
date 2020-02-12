@@ -9,9 +9,7 @@ export default {
     state.sidebarActive = active
   },
   addCity (state, city) {
-    if (state.city.indexOf(city) === -1) {
-      state.city.push(city)
-    }
+    state.city.push(city)
   },
   addSubscriptionCity (state, subscription) {
     state.subscriptionCity.push(subscription)

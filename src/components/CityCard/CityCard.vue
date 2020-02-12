@@ -2,11 +2,16 @@
  * @Author: pwjworks
  * @Date: 2020-02-08 02:46:21
  * @Last Modified by: pwjworks
- * @Last Modified time: 2020-02-12 01:19:12
+ * @Last Modified time: 2020-02-13 01:19:15
  */
  // TODO 路由
 <template>
-  <router-link to="/app">
+  <router-link :to="{
+    path:'/app',
+    query:{
+      city:encodeURI(city)
+    }
+    }">
     <section class="card-container">
       <p class="header">{{city}}</p>
       <div class="weather-icon-container">

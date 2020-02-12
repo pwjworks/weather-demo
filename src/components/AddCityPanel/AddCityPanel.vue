@@ -2,9 +2,9 @@
  * @Author: pwjworks
  * @Date: 2020-02-08 02:46:12
  * @Last Modified by: pwjworks
- * @Last Modified time: 2020-02-09 14:42:35
+ * @Last Modified time: 2020-02-13 01:25:39
  */
- //TODO 业务逻辑
+
 <template>
   <div class="inner-container">
     <div class="subscription-container">
@@ -14,24 +14,32 @@
         </div>
         <div class="select-container">
           <div class="select">
-            <p>PROVINCE</p>
-            <select name="province">
-              <option value="广东" class="prov">广东</option>
-              <option value="深圳" class="prov">深圳</option>
-              <option value="湖南" class="prov">湖南</option>
+            <p>Province</p>
+            <select v-model="selectedProv" name="province">
+              <option disabled value>省份</option>
+              <option
+                v-for="(prov,index) in provinceList"
+                :value="prov"
+                :key="index"
+                class="prov"
+              >{{prov}}</option>
             </select>
           </div>
           <div class="select">
-            <p>CITY</p>
-            <select name="city">
-              <option value="广州" class="opt" selected>广州</option>
-              <option value="清远" class="opt">清远</option>
-              <option value="佛山" class="opt">佛山</option>
+            <p>City</p>
+            <select v-model="selectedCity" name="city">
+              <option disabled value>市</option>
+              <option
+                v-for="(city,index) in cityMap.get(selectedProv)"
+                :value="city"
+                :key="index"
+                class="prov_city"
+              >{{city}}</option>
             </select>
           </div>
         </div>
         <div class="select-btn">
-          <button id="select-confirm">ADD CITY</button>
+          <button id="select-confirm" @click="add_sub()">ADD CITY</button>
         </div>
       </div>
     </div>
@@ -39,7 +47,72 @@
 </template>
 
 <script>
-export default {}
+import ProvinceList from 'utils/getProvinceList'
+import CityMap from 'utils/getCityList'
+import { mapState, mapMutations } from 'vuex'
+import { getWeatherForecast } from 'api/getWeatherForecast'
+import { getLiveWeather } from 'api/getLiveWeather'
+import { ERR_OK } from 'api/config'
+
+export default {
+  data () {
+    return {
+      selectedProv: '',
+      selectedCity: '',
+      cityMap: CityMap,
+      provinceList: ProvinceList,
+      weekWeather: []
+    }
+  },
+  computed: {
+    ...mapState({
+      // 订阅过的城市
+      sub_city: state => state.city,
+      subscriptionCity: state => state.subscriptionCity
+    })
+  },
+  methods: {
+    // 获得实时天气和天气预报
+    getLiveWeather__WeatherForecast: function (city) {
+      Promise.all([getWeatherForecast(city), getLiveWeather(city)]).then(
+        res => {
+          console.log(res)
+          if (
+            res[0].data.err_code === ERR_OK &&
+            res[1].data.err_code === ERR_OK
+          ) {
+            this.weekWeather = res[0].data.weather
+            // 添加订阅城市
+            this.addSubscriptionCity({
+              city: this.selectedCity,
+              max: this.weekWeather[1].tem1,
+              min: this.weekWeather[1].tem2,
+              liveTem: res[1].data.weather.tem,
+              weather: this.weekWeather[1].wea,
+              wea_img: this.weekWeather[1].wea_img
+            })
+            // TODO 添加通知
+          } else {
+            // TODO 添加通知
+          }
+        }
+      )
+    },
+    add_sub: function () {
+      if (this.selectedCity !== '') {
+        if (this.sub_city.indexOf(this.selectedCity) === -1) {
+          this.addCity(this.selectedCity)
+          this.getLiveWeather__WeatherForecast(this.selectedCity)
+        } else {
+          // TODO 添加通知
+        }
+      } else {
+        // TODO 添加通知
+      }
+    },
+    ...mapMutations(['addSubscriptionCity', 'addCity'])
+  }
+}
 </script>
 
 <style lang="stylus" scoped>
@@ -96,6 +169,7 @@ export default {}
   p
     font-size $font-size-medium
     margin 2rem
+//TODO 更改样式
 .select-btn
   width 10rem
   button
@@ -104,4 +178,6 @@ export default {}
     width 100%
     height 3rem
     border-radius 2rem
+a
+  text-decoration none
 </style>
