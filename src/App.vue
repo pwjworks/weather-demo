@@ -2,7 +2,7 @@
  * @Author: pwjworks
  * @Date: 2020-02-08 02:48:36
  * @Last Modified by: pwjworks
- * @Last Modified time: 2020-02-09 00:08:11
+ * @Last Modified time: 2020-02-14 01:51:30
  */
 <template>
 <div class="app">
@@ -17,6 +17,9 @@ import Header from 'components/Header/Header.vue'
 import Sidebar from 'components/Sidebar/Sidebar.vue'
 
 export default {
+  metaInfo: {
+    title: 'Pwjworks\' weather app'
+  },
   components: {
     Header,
     Sidebar

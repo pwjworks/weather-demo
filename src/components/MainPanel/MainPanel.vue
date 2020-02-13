@@ -2,7 +2,7 @@
  * @Author: pwjworks
  * @Date: 2020-02-08 02:47:10
  * @Last Modified by: pwjworks
- * @Last Modified time: 2020-02-13 01:33:41
+ * @Last Modified time: 2020-02-14 01:44:36
  */
 <template>
   <div class="container">
@@ -90,7 +90,9 @@ export default {
             this.addCity(city)
           }
         }
-      )
+      ).catch((value) => {
+        console.log(value)
+      })
     },
     // 取得天气数据
     getWeatherData: function () {
@@ -108,6 +110,8 @@ export default {
           this.getLiveWeather__WeatherForecast(
             this.city.substr(0, index === -1 ? this.city.length : index)
           )
+        }).catch((value) => {
+          console.log(value)
         })
       }
     },

@@ -10,7 +10,7 @@
       <p>{{weekdayEN}}</p>
     </div>
     <div class="forecast-icon-container">
-      <embed :src="'src/assets/icons/weather/' + this.wea_img + '.svg'" type="image/svg+xml" />
+      <embed :src="'../src/assets/icons/weather/' + this.wea_img + '.svg'" type="image/svg+xml" />
     </div>
     <div class="tem-container">
       <p class="tem">{{tem}}</p>

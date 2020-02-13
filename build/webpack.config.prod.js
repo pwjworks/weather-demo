@@ -5,10 +5,11 @@ const merge = require('webpack-merge')
 
 module.exports = merge(baseConfig, {
   entry: {
-    app: path.join(__dirname, '../src/index.js'),
+    app: path.join(__dirname, '../src/client-entry.js'),
     vendor: ['vue']
   },
   output: {
+    path: path.resolve(__dirname, '../dist'),
     filename: '[name].[chunkhash:8].js'
   },
   module: {

@@ -6,13 +6,15 @@ const {
   CleanWebpackPlugin
 } = require('clean-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const VueClientPlugin = require('vue-server-renderer/client-plugin')
 
 module.exports = {
-  entry: path.join(__dirname, '../src/index.js'),
+  entry: path.join(__dirname, '../src/client-entry.js'),
   context: path.resolve(__dirname),
   output: {
-    path: path.resolve(__dirname, '../dist'),
-    filename: 'bundle.js'
+    path: path.join(__dirname, '../public'),
+    publicPath: 'http://127.0.0.1:8000/public/',
+    filename: 'bundle.[hash:8].js'
   },
   module: {
     rules: [{
@@ -59,6 +61,7 @@ module.exports = {
       template: path.resolve(__dirname, './template.html')
     }),
     new VueLoaderPlugin(),
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
+    new VueClientPlugin()
   ]
 }

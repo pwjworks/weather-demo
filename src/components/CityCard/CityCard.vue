@@ -15,7 +15,7 @@
     <section class="card-container">
       <p class="header">{{city}}</p>
       <div class="weather-icon-container">
-        <embed :src="'src/assets/icons/weather/'+wea_img+'.svg'" type="image/svg+xml" />
+        <embed :src="'../src/assets/icons/weather/'+wea_img+'.svg'" type="image/svg+xml" />
       </div>
       <div class="temperature-text-container">
         <p class="tem">{{live_tem}}</p>

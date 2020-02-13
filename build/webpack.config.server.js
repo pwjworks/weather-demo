@@ -9,6 +9,7 @@ const Dotenv = require('dotenv-webpack')
 const VueServerPlugin = require('vue-server-renderer/server-plugin')
 
 module.exports = merge(baseConfig, {
+  mode: 'development',
   target: 'node',
   entry: path.join(__dirname, '../src/server-entry.js'),
   devtool: 'source-map',
@@ -17,7 +18,7 @@ module.exports = merge(baseConfig, {
     filename: 'server-entry.js',
     path: path.join(__dirname, '../server-build')
   },
-  externals: Object.keys(require('../packge.json').dependencies),
+  externals: Object.keys(require('../package.json').dependencies),
   module: {
     rules: [{
       test: /.vue$/,

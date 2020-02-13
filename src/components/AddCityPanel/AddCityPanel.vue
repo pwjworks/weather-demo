@@ -2,7 +2,7 @@
  * @Author: pwjworks
  * @Date: 2020-02-08 02:46:12
  * @Last Modified by: pwjworks
- * @Last Modified time: 2020-02-13 01:25:39
+ * @Last Modified time: 2020-02-14 01:36:57
  */
 
 <template>
@@ -96,7 +96,9 @@ export default {
             // TODO 添加通知
           }
         }
-      )
+      ).catch((value) => {
+        console.log(value)
+      })
     },
     add_sub: function () {
       if (this.selectedCity !== '') {
