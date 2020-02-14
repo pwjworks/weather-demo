@@ -4,13 +4,15 @@ const baseConfig = require('./webpack.config.common')
 const merge = require('webpack-merge')
 
 module.exports = merge(baseConfig, {
+  mode: 'production',
   entry: {
     app: path.join(__dirname, '../src/client-entry.js'),
     vendor: ['vue']
   },
   output: {
-    path: path.resolve(__dirname, '../dist'),
-    filename: '[name].[chunkhash:8].js'
+    path: path.resolve(__dirname, '../public'),
+    filename: '[name].[chunkhash:8].js',
+    publicPath: '/public/'
   },
   module: {
     rules: [{

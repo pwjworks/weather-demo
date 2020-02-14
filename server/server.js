@@ -1,11 +1,20 @@
+/*
+ * @Author: pwjworks
+ * @Date: 2020-02-15 00:43:52
+ * @Last Modified by: pwjworks
+ * @Last Modified time: 2020-02-15 02:55:22
+ */
 const Koa = require('koa')
 const send = require('koa-send')
 const path = require('path')
-const pageRouter = require('./router/dev-ssr')
-const app = new Koa()
-
+const staticRouter = require('./routers/static')
+const apiRouter = require('./routers/api')
 const isDev = process.env.NODE_ENV === 'development'
+const createHandler = require('./routers/api-handler')
+const config = require('../app.config')
 
+const handler = createHandler(config.app_secret)
+const app = new Koa()
 app.use(async (ctx, next) => {
   try {
     console.log(`request with path ${ctx.path}`)
@@ -21,7 +30,7 @@ app.use(async (ctx, next) => {
   }
 })
 
-// 静态资源处理
+// favicon.ico静态资源处理
 app.use(async (ctx, next) => {
   if (ctx.path === '/favicon.ico') {
     await send(ctx, '/favicon.ico', {
@@ -32,6 +41,7 @@ app.use(async (ctx, next) => {
   }
 })
 
+// 静态资源处理
 app.use(async (ctx, next) => {
   if (ctx.path.search('/src/assets/icons/weather/') !== -1) {
     ctx.headers['Content-Type'] = 'text/xml'
@@ -43,6 +53,18 @@ app.use(async (ctx, next) => {
   }
 })
 
+app.use(async (ctx, next) => {
+  ctx.handler = handler
+  await next()
+})
+app.use(apiRouter.routes()).use(apiRouter.allowedMethods())
+app.use(staticRouter.routes()).use(staticRouter.allowedMethods())
+let pageRouter
+if (isDev) {
+  pageRouter = require('./routers/dev-ssr')
+} else {
+  pageRouter = require('./routers/ssr')
+}
 app.use(pageRouter.routes()).use(pageRouter.allowedMethods())
 
 const HOST = process.env.HOST || '0.0.0.0'

@@ -1,8 +1,8 @@
 /*
  * @Author: pwjworks
  * @Date: 2020-02-08 02:48:14
- * @Last Modified by:   pwjworks
- * @Last Modified time: 2020-02-08 02:48:14
+ * @Last Modified by: pwjworks
+ * @Last Modified time: 2020-02-15 01:59:47
  */
 import getMD5Sign from 'utils/getMD5Sign'
 
@@ -25,7 +25,7 @@ function param (data) {
 }
 
 /**
- *返回url（缺少sign参数）
+ *返回完整url
  *
  * @export
  * @param {*} url

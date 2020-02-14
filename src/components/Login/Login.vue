@@ -1,8 +1,8 @@
 /*
  * @Author: pwjworks
  * @Date: 2020-02-08 02:47:01
- * @Last Modified by:   pwjworks
- * @Last Modified time: 2020-02-08 02:47:01
+ * @Last Modified by: pwjworks
+ * @Last Modified time: 2020-02-14 15:15:02
  */
  //TODO 业务逻辑
 <template>
@@ -29,7 +29,9 @@
 
 <script>
 export default {
-
+  metaInfo: {
+    title: 'Login'
+  }
 }
 </script>
 
