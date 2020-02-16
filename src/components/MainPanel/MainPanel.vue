@@ -2,22 +2,45 @@
  * @Author: pwjworks
  * @Date: 2020-02-08 02:47:10
  * @Last Modified by: pwjworks
- * @Last Modified time: 2020-02-14 01:44:36
+ * @Last Modified time: 2020-02-16 22:09:10
  */
 <template>
   <div class="container">
-    <div class="weather-card">
-      <div class="weather-info">
-        <temperature-panel :tem="tem" :humidity="humidity" :pm2_5="pm2_5"></temperature-panel>
-        <location-panel
-          :city="city"
-          :liveWeather="liveWeather"
-        ></location-panel>
+    <router-link to="/subscription">
+      <transition name="slide-fade-x-slow">
+        <div v-if="arrowShow" class="arrow-icon">
+          <svg
+            t="1581782785531"
+            class="icon"
+            viewBox="0 0 1024 1024"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            p-id="2085"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            width="100%"
+            height="100%"
+          >
+            <path
+              d="M677.354667 836.608l-291.84-286.549333a53.333333 53.333333 0 0 1-0.704-75.413334l0.704-0.704L677.333333 187.392a53.333333 53.333333 0 0 0-74.709333-76.117333L310.784 397.824l-2.090667 2.090667a160 160 0 0 0 2.090667 226.261333l291.84 286.549333a53.333333 53.333333 0 0 0 74.730667-76.117333z"
+              fill="rgb(57,67,122)"
+              p-id="2086"
+            />
+          </svg>
+          <p>BACK</p>
+        </div>
+      </transition>
+    </router-link>
+    <transition name="fade">
+      <div v-show="show" class="weather-card">
+        <div class="weather-info">
+          <temperature-panel :tem="tem" :humidity="humidity" :pm2_5="pm2_5"></temperature-panel>
+          <location-panel :city="city" :liveWeather="liveWeather"></location-panel>
+        </div>
+        <div class="forcast-info">
+          <forecast-panel :weekWeather="weekWeather"></forecast-panel>
+        </div>
       </div>
-      <div class="forcast-info">
-        <forecast-panel :weekWeather="weekWeather"></forecast-panel>
-      </div>
-    </div>
+    </transition>
   </div>
 </template>
 
@@ -39,18 +62,29 @@ export default {
   },
   data () {
     return {
-      city: this.$route.query.city === undefined ? '' : decodeURI(this.$route.query.city),
+      show: false,
+      city:
+        this.$route.query.city === undefined
+          ? ''
+          : decodeURI(this.$route.query.city),
       liveWeather: '',
       liveTem: '',
       humidity: undefined,
       tem: undefined,
       pm2_5: undefined,
-      weekWeather: []
+      weekWeather: [],
+      arrowShow: false
     }
   },
   created () {
     // 结点被创建时获取数据
     this.__getWeatherData()
+  },
+  mounted () {
+    this.show = true
+    setTimeout(() => {
+      this.arrowShow = true
+    }, 500)
   },
   computed: {
     ...mapState({
@@ -62,8 +96,8 @@ export default {
   methods: {
     // 获得实时天气和天气预报
     getLiveWeather__WeatherForecast: function (city) {
-      Promise.all([getWeatherForecast(city), getLiveWeather(city)]).then(
-        res => {
+      Promise.all([getWeatherForecast(city), getLiveWeather(city)])
+        .then(res => {
           // 天气预报结果
           if (res[0].data.err_code === ERR_OK) {
             this.weekWeather = res[0].data.weather
@@ -89,10 +123,10 @@ export default {
             })
             this.addCity(city)
           }
-        }
-      ).catch((value) => {
-        console.log(value)
-      })
+        })
+        .catch(value => {
+          console.log(value)
+        })
     },
     // 取得天气数据
     getWeatherData: function () {
@@ -102,17 +136,19 @@ export default {
           this.city.substr(0, index === -1 ? this.city.length : index)
         )
       } else {
-        getIPLocation().then(res => {
-          if (res.data.err_code === ERR_OK) {
-            this.city = res.data.content.address_detail.city
-          }
-          const index = this.city.indexOf('市')
-          this.getLiveWeather__WeatherForecast(
-            this.city.substr(0, index === -1 ? this.city.length : index)
-          )
-        }).catch((value) => {
-          console.log(value)
-        })
+        getIPLocation()
+          .then(res => {
+            if (res.data.err_code === ERR_OK) {
+              this.city = res.data.content.address_detail.city
+            }
+            const index = this.city.indexOf('市')
+            this.getLiveWeather__WeatherForecast(
+              this.city.substr(0, index === -1 ? this.city.length : index)
+            )
+          })
+          .catch(value => {
+            console.log(value)
+          })
       }
     },
     __getWeatherData: function () {
@@ -122,7 +158,10 @@ export default {
           this.getWeatherData()
           break
         } catch (err) {
-          // TODO 添加通知
+          this.$notify({
+            content: 'Please try later.',
+            btn: 'close'
+          })
         }
       }
     },
@@ -145,7 +184,7 @@ export default {
   position absolute
   width 62.5rem
   height 42.5rem
-  box-shadow 0 0 1.25rem $color-shadow-grey
+  box-shadow 0 0 .5rem $color-shadow-grey
   background white
   border-radius 1.5rem
 .weather-info
@@ -166,4 +205,13 @@ export default {
   padding-right 2.25rem
   height 45%
   border-radius 0 0 1.5rem 1.5rem
+.arrow-icon
+  opacity 0.8
+  position absolute
+  left 3rem
+  width 4rem
+  height 4rem
+  p
+    margin-top 0.5rem
+    color white
 </style>

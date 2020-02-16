@@ -2,24 +2,23 @@
  * @Author: pwjworks
  * @Date: 2020-02-08 17:51:05
  * @Last Modified by: pwjworks
- * @Last Modified time: 2020-02-14 00:36:44
+ * @Last Modified time: 2020-02-15 21:40:00
  */
- //TODO 业务逻辑
 <template>
   <div class="inner-container">
-    <div class="subscription-container">
-      <city-card
-        v-for="(subscription,index) in subscriptionCity"
-        :key="index"
-        :city="subscription.city"
-        :weather="subscription.weather"
-        :max="subscription.max"
-        :min="subscription.min"
-        :wea_img="subscription.wea_img"
-        :live_tem="subscription.liveTem"
-      ></city-card>
-      <add-city-card></add-city-card>
-    </div>
+      <div class="subscription-container">
+        <city-card
+          v-for="(subscription,index) in subscriptionCity"
+          :key="index"
+          :city="subscription.city"
+          :weather="subscription.weather"
+          :max="subscription.max"
+          :min="subscription.min"
+          :wea_img="subscription.wea_img"
+          :live_tem="subscription.liveTem"
+        ></city-card>
+        <add-city-card></add-city-card>
+      </div>
   </div>
 </template>
 

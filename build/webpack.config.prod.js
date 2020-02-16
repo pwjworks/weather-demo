@@ -2,6 +2,7 @@ const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const baseConfig = require('./webpack.config.common')
 const merge = require('webpack-merge')
+const cdnConfig = require('../app.config.js').AliOSS
 
 module.exports = merge(baseConfig, {
   mode: 'production',
@@ -12,7 +13,7 @@ module.exports = merge(baseConfig, {
   output: {
     path: path.resolve(__dirname, '../public'),
     filename: '[name].[chunkhash:8].js',
-    publicPath: '/public/'
+    publicPath: cdnConfig.host
   },
   module: {
     rules: [{

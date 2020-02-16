@@ -2,20 +2,22 @@
  * @Author: pwjworks
  * @Date: 2020-02-08 02:46:27
  * @Last Modified by: pwjworks
- * @Last Modified time: 2020-02-08 19:34:21
+ * @Last Modified time: 2020-02-16 20:48:37
  */
 <template>
-  <div class="forecast">
-    <div class="forecast-date">
-      <p>{{weekdayEN}}</p>
+  <transition name="fade">
+    <div  v-if="show" class="forecast">
+      <div class="forecast-date">
+        <p>{{weekdayEN}}</p>
+      </div>
+      <div class="forecast-icon-container">
+        <embed :src="'./public/resources/icons/weather/' + this.wea_img + '.svg'" type="image/svg+xml" />
+      </div>
+      <div class="tem-container">
+        <p class="tem">{{tem}}</p>
+      </div>
     </div>
-    <div class="forecast-icon-container">
-      <embed :src="'../src/assets/icons/weather/' + this.wea_img + '.svg'" type="image/svg+xml" />
-    </div>
-    <div class="tem-container">
-      <p class="tem">{{tem}}</p>
-    </div>
-  </div>
+  </transition>
 </template>
 
 <script type="text/ecmascript-6">
@@ -29,7 +31,8 @@ export default {
   data () {
     return {
       weekdayEN: '',
-      imgUrl: ''
+      imgUrl: '',
+      show: false
     }
   },
   watch: {
@@ -39,25 +42,29 @@ export default {
       },
       immediate: true
     }
+  },
+  mounted () {
+    this.show = true
   }
 }
 </script>
 
 <style lang="stylus" scoped>
-@import '~assets/styles/variable.styl';
-  .forecast-date
-    margin-bottom 1.875rem
-    p
-      letter-spacing .75rem
-      font-size $font-size-medium-l
-      font-weight bold
-      color $color-font-forecast
-  .tem-container
-    margin-top 1.875rem
-  .tem
-    font-size $font-size-medium
+@import '~assets/styles/variable.styl'
+
+.forecast-date
+  margin-bottom 1.875rem
+  p
+    letter-spacing 0.75rem
+    font-size $font-size-medium-l
+    font-weight bold
     color $color-font-forecast
-  .forecast-icon-container
-    width 4rem
-    height 3.75rem
+.tem-container
+  margin-top 1.875rem
+.tem
+  font-size $font-size-medium
+  color $color-font-forecast
+.forecast-icon-container
+  width 4rem
+  height 3.75rem
 </style>

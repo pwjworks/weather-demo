@@ -2,7 +2,7 @@
  * @Author: pwjworks
  * @Date: 2020-02-15 00:43:52
  * @Last Modified by: pwjworks
- * @Last Modified time: 2020-02-15 02:55:22
+ * @Last Modified time: 2020-02-16 20:37:12
  */
 const Koa = require('koa')
 const send = require('koa-send')
@@ -55,6 +55,7 @@ app.use(async (ctx, next) => {
 
 app.use(async (ctx, next) => {
   ctx.handler = handler
+  ctx.city = ctx.query.city === undefined ? '' : decodeURI(ctx.query.city)
   await next()
 })
 app.use(apiRouter.routes()).use(apiRouter.allowedMethods())

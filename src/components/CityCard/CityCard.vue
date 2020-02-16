@@ -2,9 +2,8 @@
  * @Author: pwjworks
  * @Date: 2020-02-08 02:46:21
  * @Last Modified by: pwjworks
- * @Last Modified time: 2020-02-13 01:19:15
+ * @Last Modified time: 2020-02-16 20:51:11
  */
- // TODO 路由
 <template>
   <router-link :to="{
     path:'/app',
@@ -12,70 +11,72 @@
       city:encodeURI(city)
     }
     }">
-    <section class="card-container">
-      <p class="header">{{city}}</p>
-      <div class="weather-icon-container">
-        <embed :src="'../src/assets/icons/weather/'+wea_img+'.svg'" type="image/svg+xml" />
-      </div>
-      <div class="temperature-text-container">
-        <p class="tem">{{live_tem}}</p>
-        <p class="wea">{{weather}}</p>
-      </div>
-      <section class="max-min-container">
-        <div class="max">
-          <div class="max-icon">
-            <svg
-              t="1580840189884"
-              viewBox="0 0 1024 1024"
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              p-id="1114"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              width="100%"
-              height="100%"
-            >
-              <path
-                d="M472.064 272.448l-399.232 399.232c-22.08 22.08-22.08 57.792 0 79.872 22.016 22.016 57.792 22.08 79.872 0L512 392.256l359.296 359.296c22.016 22.016 57.792 22.08 79.872 0 22.08-22.08 22.016-57.792 0-79.872L551.936 272.448C529.856 250.432 494.144 250.432 472.064 272.448z"
-                p-id="1115"
-                fill="#d81e06"
-              />
-            </svg>
-          </div>
-          <div class="tem-num">
-            <p>{{max.replace('℃','')}}</p>
-          </div>
-          <div class="max-text">
-            <p>max</p>
-          </div>
+    <transition name="slide-fade">
+      <section v-show="show" class="card-container">
+        <p class="header">{{city}}</p>
+        <div class="weather-icon-container">
+          <embed :src="'./public/resources/icons/weather/'+wea_img+'.svg'" type="image/svg+xml" />
         </div>
-        <div class="min">
-          <div class="min-icon">
-            <svg
-              t="1580840107056"
-              viewBox="0 0 1024 1024"
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              p-id="2091"
-              width="100%"
-              height="100%"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-            >
-              <path
-                d="M472.064 751.552 72.832 352.32c-22.08-22.08-22.08-57.792 0-79.872 22.016-22.016 57.792-22.08 79.872 0L512 631.744l359.296-359.296c22.016-22.016 57.792-22.08 79.872 0 22.08 22.08 22.016 57.792 0 79.872l-399.232 399.232C529.856 773.568 494.144 773.568 472.064 751.552z"
-                p-id="2092"
-                fill="#1afa29"
-              />
-            </svg>
-          </div>
-          <div class="tem-num">
-            <p>{{min.replace('℃','')}}</p>
-          </div>
-          <div class="min-text">
-            <p>min</p>
-          </div>
+        <div class="temperature-text-container">
+          <p class="tem">{{live_tem}}</p>
+          <p class="wea">{{weather}}</p>
         </div>
+        <section class="max-min-container">
+          <div class="max">
+            <div class="max-icon">
+              <svg
+                t="1580840189884"
+                viewBox="0 0 1024 1024"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                p-id="1114"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                width="100%"
+                height="100%"
+              >
+                <path
+                  d="M472.064 272.448l-399.232 399.232c-22.08 22.08-22.08 57.792 0 79.872 22.016 22.016 57.792 22.08 79.872 0L512 392.256l359.296 359.296c22.016 22.016 57.792 22.08 79.872 0 22.08-22.08 22.016-57.792 0-79.872L551.936 272.448C529.856 250.432 494.144 250.432 472.064 272.448z"
+                  p-id="1115"
+                  fill="#d81e06"
+                />
+              </svg>
+            </div>
+            <div class="tem-num">
+              <p>{{max.replace('℃','')}}</p>
+            </div>
+            <div class="max-text">
+              <p>max</p>
+            </div>
+          </div>
+          <div class="min">
+            <div class="min-icon">
+              <svg
+                t="1580840107056"
+                viewBox="0 0 1024 1024"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                p-id="2091"
+                width="100%"
+                height="100%"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+              >
+                <path
+                  d="M472.064 751.552 72.832 352.32c-22.08-22.08-22.08-57.792 0-79.872 22.016-22.016 57.792-22.08 79.872 0L512 631.744l359.296-359.296c22.016-22.016 57.792-22.08 79.872 0 22.08 22.08 22.016 57.792 0 79.872l-399.232 399.232C529.856 773.568 494.144 773.568 472.064 751.552z"
+                  p-id="2092"
+                  fill="#1afa29"
+                />
+              </svg>
+            </div>
+            <div class="tem-num">
+              <p>{{min.replace('℃','')}}</p>
+            </div>
+            <div class="min-text">
+              <p>min</p>
+            </div>
+          </div>
+        </section>
       </section>
-    </section>
+    </transition>
   </router-link>
 </template>
 
@@ -88,8 +89,17 @@ export default {
     max: String,
     min: String,
     wea_img: String
+  },
+  data () {
+    return {
+      show: false
+    }
+  },
+  mounted () {
+    this.show = true
   }
 }
+
 </script>
 
 <style lang="stylus" scoped>

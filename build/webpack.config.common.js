@@ -7,6 +7,7 @@ const {
 } = require('clean-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const VueClientPlugin = require('vue-server-renderer/client-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   entry: path.join(__dirname, '../src/client-entry.js'),
@@ -42,7 +43,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 1024,
-          name: 'resources/[path][name]-[hash:8].[ext]'
+          name: 'resources/[name]-[hash:8].[ext]'
         }
       }]
     }
@@ -62,6 +63,12 @@ module.exports = {
     }),
     new VueLoaderPlugin(),
     new CleanWebpackPlugin(),
-    new VueClientPlugin()
+    new VueClientPlugin(),
+    new CopyPlugin([{
+      from: path.resolve(__dirname, '../src/assets'),
+      to: 'resources/[path][name].[ext]',
+      ignore: ['icons/common/*',
+        'styles/*']
+    }])
   ]
 }

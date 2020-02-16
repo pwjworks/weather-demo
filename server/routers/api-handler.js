@@ -1,8 +1,8 @@
 /*
  * @Author: pwjworks
  * @Date: 2020-02-15 03:08:51
- * @Last Modified by:   pwjworks
- * @Last Modified time: 2020-02-15 03:08:51
+ * @Last Modified by: pwjworks
+ * @Last Modified time: 2020-02-15 03:49:14
  */
 const axios = require('axios')
 const MD5 = require('js-md5')
@@ -43,7 +43,7 @@ module.exports = (appSecret) => {
       key += k
     }
     key += appSecret
-    url += `&sign=${MD5(key).toUpperCase()}`
+    url += `&sign=${MD5(key)}`
     url = url.substr(1)
     url = (url.indexOf('?') < 0 ? '?' : '&') + url
     return url
@@ -55,7 +55,7 @@ module.exports = (appSecret) => {
      * @param {*} data
      * @returns
      */
-    async getAPIResp (data) {
+    async getWeatherAPIResp (data) {
       return handleRequest(await request.get(urlHandler(data)))
     }
   }
