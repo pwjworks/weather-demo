@@ -11,7 +11,7 @@ import Subscription from 'components/Subscription/Subscription.vue'
 export default [
   {
     path: '/',
-    redirect: '/app'
+    redirect: '/addcity'
   },
   {
     path: '/app',

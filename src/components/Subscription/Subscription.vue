@@ -24,7 +24,7 @@
 
 <script type="text/ecmascript-6">
 import CityCard from 'components/CityCard/CityCard.vue'
-import AddCityCard from 'components/AddCityCard/AddcityCard.vue'
+import AddCityCard from 'components/AddCityCard/AddCityCard.vue'
 import { mapState } from 'vuex'
 
 export default {

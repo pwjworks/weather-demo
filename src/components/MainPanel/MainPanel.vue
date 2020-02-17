@@ -138,13 +138,18 @@ export default {
       } else {
         getIPLocation()
           .then(res => {
-            if (res.data.err_code === ERR_OK) {
+            if (res.data.err_code === ERR_OK && res.data.content.address_detail.city !== '') {
               this.city = res.data.content.address_detail.city
+              const index = this.city.indexOf('市')
+              this.getLiveWeather__WeatherForecast(
+                this.city.substr(0, index === -1 ? this.city.length : index)
+              )
+            } else {
+              this.$notify({
+                content: 'Can\'t get IP location',
+                btn: 'close'
+              })
             }
-            const index = this.city.indexOf('市')
-            this.getLiveWeather__WeatherForecast(
-              this.city.substr(0, index === -1 ? this.city.length : index)
-            )
           })
           .catch(value => {
             console.log(value)
