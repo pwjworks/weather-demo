@@ -2,7 +2,7 @@
  * @Author: pwjworks
  * @Date: 2020-02-08 02:47:10
  * @Last Modified by: pwjworks
- * @Last Modified time: 2020-02-18 02:47:10
+ * @Last Modified time: 2020-02-19 00:28:38
  */
 <template>
   <div class="container">
@@ -182,7 +182,7 @@ export default {
   display flex
   align-items center
   justify-content center
-  background linear-gradient(rgb(255, 213, 159), rgb(255, 171, 159))
+  background linear-gradient(rgb(221,135,165), rgb(151,125,219))
   width 100%
   height 100%
   @media screen and (max-width: 768px)
@@ -211,7 +211,7 @@ export default {
   height 55%
   box-shadow 0px 0.125rem 1rem $color-shadow-grey
   border-radius 1.5rem 1.5rem 0 0
-  background linear-gradient(rgb(102, 102, 173), rgb(255, 186, 186))
+  background linear-gradient(rgb(103,103,173), rgb(254,186,186))
   color white
   @media screen and (max-width: 768px)
     flex-direction column
