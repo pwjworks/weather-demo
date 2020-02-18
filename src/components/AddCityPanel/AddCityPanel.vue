@@ -2,7 +2,7 @@
  * @Author: pwjworks
  * @Date: 2020-02-08 02:46:12
  * @Last Modified by: pwjworks
- * @Last Modified time: 2020-02-18 23:25:22
+ * @Last Modified time: 2020-02-19 00:44:05
  */
 
 <template>
@@ -195,7 +195,7 @@ export default {
   background white
   @media screen and (max-width: 768px)
     width 100%
-    height 80%
+    height 90%
     flex-direction column
 .search-text
   margin-top 4rem

@@ -2,7 +2,7 @@
  * @Author: pwjworks
  * @Date: 2020-02-08 02:46:41
  * @Last Modified by: pwjworks
- * @Last Modified time: 2020-02-18 02:50:44
+ * @Last Modified time: 2020-02-19 00:45:31
  */
 <template>
   <div class="header">
@@ -48,6 +48,8 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@import '~assets/styles/variable.styl'
+
 .header
   display flex
   flex-direction row
@@ -67,7 +69,7 @@ export default {
     font-size 1.5rem
     line-height 100%
     @media screen and (max-width: 768px)
-      font-size 1.25rem
+      font-size $font-size-small
       letter-spacing 0
 .side-menu-icon
   width 1.75rem

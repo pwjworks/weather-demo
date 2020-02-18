@@ -2,7 +2,7 @@
  * @Author: pwjworks
  * @Date: 2020-02-15 00:43:22
  * @Last Modified by: pwjworks
- * @Last Modified time: 2020-02-19 00:23:09
+ * @Last Modified time: 2020-02-19 00:41:06
  */
 // const axios = require('axios')
 const Router = require('koa-router')
@@ -20,7 +20,7 @@ apiRouter.get('/IPLocation', async (ctx) => {
     ip: clientIP,
     s: 'App.Open_Baidu.LocationIP'
   })
-  if (ctx.city === '' && resp.data.content.address_detail.city !== '') {
+  if (ctx.city === '' && resp.data.err_code === 0 && resp.data.content.address_detail.city !== '') {
     ctx.city = resp.data.content.address_detail.city
   }
   ctx.body = resp
