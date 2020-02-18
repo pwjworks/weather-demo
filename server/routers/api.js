@@ -2,7 +2,7 @@
  * @Author: pwjworks
  * @Date: 2020-02-15 00:43:22
  * @Last Modified by: pwjworks
- * @Last Modified time: 2020-02-18 23:53:23
+ * @Last Modified time: 2020-02-18 23:58:38
  */
 // const axios = require('axios')
 const Router = require('koa-router')
@@ -15,7 +15,7 @@ apiRouter.get('/IPLocation', async (ctx) => {
   console.log('forward:' + ctx.req.headers['X-Real-IP'])
   console.log('remote addr:' + ctx.req.headers['X-Forwarded-For'])
   console.log('host:' + ctx.headers.req.headers.Host)
-  console.log(ctx)
+  console.log('ctx:' + ctx)
   const resp = await ctx.handler.getWeatherAPIResp({
     app_key: 'F3A4E792DCFE446D889CB97357310B1B',
     s: 'App.Open_Baidu.LocationIP'
