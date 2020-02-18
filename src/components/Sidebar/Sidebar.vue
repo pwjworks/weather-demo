@@ -2,7 +2,7 @@
  * @Author: pwjworks
  * @Date: 2020-02-08 02:47:16
  * @Last Modified by: pwjworks
- * @Last Modified time: 2020-02-08 23:40:50
+ * @Last Modified time: 2020-02-18 02:52:10
  */
 
 <template>
@@ -48,6 +48,8 @@ export default {
     width 25rem
     height 100%
     z-index 10
+    @media screen and (max-width: 768px)
+      width 100%
   #menu-header
     box-shadow 0 0.0625rem 1.875rem grey
     width 100%

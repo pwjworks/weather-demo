@@ -2,7 +2,7 @@
  * @Author: pwjworks
  * @Date: 2020-02-08 02:46:12
  * @Last Modified by: pwjworks
- * @Last Modified time: 2020-02-16 00:33:20
+ * @Last Modified time: 2020-02-18 23:25:22
  */
 
 <template>
@@ -27,7 +27,7 @@
               p-id="2086"
             />
           </svg>
-          <p>BACK</p>
+          <p>MAIN</p>
         </div>
       </transition>
     </router-link>
@@ -113,7 +113,6 @@ export default {
     getLiveWeather__WeatherForecast: function (city) {
       Promise.all([getWeatherForecast(city), getLiveWeather(city)])
         .then(res => {
-          console.log(res)
           if (
             res[0].data.err_code === ERR_OK &&
             res[1].data.err_code === ERR_OK
@@ -194,6 +193,10 @@ export default {
   width 62rem
   height 42rem
   background white
+  @media screen and (max-width: 768px)
+    width 100%
+    height 80%
+    flex-direction column
 .search-text
   margin-top 4rem
   font-size $font-size-medium
@@ -205,6 +208,8 @@ export default {
   border-radius 0 1rem 1rem 0
   height 100%
   width 60%
+  @media screen and (max-width: 768px)
+    display none
   h1
     position relative
     color white
@@ -226,6 +231,8 @@ export default {
   border-radius 1rem 0 0 1rem
   height 100%
   width 40%
+  @media screen and (max-width: 768px)
+    width 100%
 .select-container
   display flex
   flex-direction column
@@ -266,9 +273,17 @@ export default {
   left 3rem
   width 4rem
   height 4rem
+  @media screen and (max-width: 768px)
+    position fixed
+    width 3rem
+    height 3rem
+    top 50%
+    left 10%
   p
     margin-top 0.5rem
     color white
+    @media screen and (max-width: 768px)
+      color black
 a
   text-decoration none
 </style>
