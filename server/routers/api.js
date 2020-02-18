@@ -15,6 +15,7 @@ apiRouter.get('/IPLocation', async (ctx) => {
   console.log('forward:' + ctx.req.headers['X-Real-IP'])
   console.log('remote addr:' + ctx.req.headers['X-Forwarded-For'])
   console.log('host:' + ctx.headers.req.headers.Host)
+  console.log(ctx)
   const resp = await ctx.handler.getWeatherAPIResp({
     app_key: 'F3A4E792DCFE446D889CB97357310B1B',
     s: 'App.Open_Baidu.LocationIP'
