@@ -15,3 +15,6 @@ vue2+vue router+vuex+nodejs+ssr+stylus
 ✨根据IP获得实时天气和天气预报  
 ✨根据订阅的城市显示其实时温度、最高温度和最低温度  
 ✨订阅城市
+
+# 效果演示
+https://weather.pwjworks.site/
