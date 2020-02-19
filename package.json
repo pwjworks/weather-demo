@@ -14,7 +14,7 @@
     "dev:server": "cross-env NODE_ENV=development nodemon server/server.js",
     "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
     "start": "cross-env NODE_ENV=production node server/server.js",
-    "upload":"node build/upload.js"
+    "upload": "node build/upload.js"
   },
   "repository": {
     "type": "git",
@@ -73,6 +73,7 @@
     "koa-router": "^8.0.7",
     "koa-send": "^5.0.0",
     "koa-session": "^5.13.1",
+    "pm2": "^4.2.3",
     "vue": "^2.6.11",
     "vue-meta": "^2.3.2",
     "vue-router": "^3.1.5",

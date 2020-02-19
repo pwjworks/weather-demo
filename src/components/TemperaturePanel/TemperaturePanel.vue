@@ -2,7 +2,7 @@
  * @Author: pwjworks
  * @Date: 2020-02-08 02:47:29
  * @Last Modified by: pwjworks
- * @Last Modified time: 2020-02-11 21:17:27
+ * @Last Modified time: 2020-02-18 02:13:08
  */
 <template>
   <div class="temperature-content">
@@ -45,6 +45,9 @@ export default {
   left 4rem
   width 18.75rem
   height 15.625rem
+  @media screen and (max-width: 768px)
+    position static
+    margin-top  4rem
 .temperature
   width 18.75rem
   height 6.25rem

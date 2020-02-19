@@ -2,7 +2,7 @@
  * @Author: pwjworks
  * @Date: 2020-02-08 02:46:27
  * @Last Modified by: pwjworks
- * @Last Modified time: 2020-02-16 20:48:37
+ * @Last Modified time: 2020-02-18 23:26:32
  */
 <template>
   <transition name="fade">
@@ -59,6 +59,21 @@ export default {
     font-size $font-size-medium-l
     font-weight bold
     color $color-font-forecast
+.forecast
+  display flex
+  align-items center
+  justify-content center
+  flex-direction column
+  height 100%
+  width 100%
+  @media screen and (max-width: 768px)
+    margin 10%
+.forecast-date
+  margin-bottom 1.25rem
+.forecast-temperature
+  display flex
+  align-content center
+  flex-direction row
 .tem-container
   margin-top 1.875rem
 .tem

@@ -2,7 +2,7 @@
  * @Author: pwjworks
  * @Date: 2020-02-08 02:47:10
  * @Last Modified by: pwjworks
- * @Last Modified time: 2020-02-16 22:09:10
+ * @Last Modified time: 2020-02-19 12:48:14
  */
 <template>
   <div class="container">
@@ -81,6 +81,7 @@ export default {
     this.__getWeatherData()
   },
   mounted () {
+    this.updateSidebarActive(false)
     this.show = true
     setTimeout(() => {
       this.arrowShow = true
@@ -138,13 +139,18 @@ export default {
       } else {
         getIPLocation()
           .then(res => {
-            if (res.data.err_code === ERR_OK) {
+            if (res.data.err_code === ERR_OK && res.data.content.address_detail.city !== '') {
               this.city = res.data.content.address_detail.city
+              const index = this.city.indexOf('市')
+              this.getLiveWeather__WeatherForecast(
+                this.city.substr(0, index === -1 ? this.city.length : index)
+              )
+            } else {
+              this.$notify({
+                content: 'Can\'t get IP location',
+                btn: 'close'
+              })
             }
-            const index = this.city.indexOf('市')
-            this.getLiveWeather__WeatherForecast(
-              this.city.substr(0, index === -1 ? this.city.length : index)
-            )
           })
           .catch(value => {
             console.log(value)
@@ -165,7 +171,7 @@ export default {
         }
       }
     },
-    ...mapMutations(['addCity', 'addSubscriptionCity'])
+    ...mapMutations(['addCity', 'addSubscriptionCity', 'updateSidebarActive'])
   }
 }
 </script>
@@ -177,9 +183,11 @@ export default {
   display flex
   align-items center
   justify-content center
-  background-image linear-gradient(rgb(255, 213, 159), rgb(255, 171, 159))
+  background linear-gradient(rgb(221,135,165), rgb(151,125,219))
   width 100%
   height 100%
+  @media screen and (max-width: 768px)
+    height auto
 .weather-card
   position absolute
   width 62.5rem
@@ -187,6 +195,14 @@ export default {
   box-shadow 0 0 .5rem $color-shadow-grey
   background white
   border-radius 1.5rem
+  @media screen and (max-width: 768px)
+    position static
+    display flex
+    flex-direction column
+    box-shadow none
+    border-radius 0
+    width 100%
+    height auto
 .weather-info
   display flex
   flex-direction row
@@ -196,8 +212,14 @@ export default {
   height 55%
   box-shadow 0px 0.125rem 1rem $color-shadow-grey
   border-radius 1.5rem 1.5rem 0 0
-  background linear-gradient(rgb(102, 102, 173), rgb(255, 186, 186))
+  background linear-gradient(rgb(103,103,173), rgb(254,186,186))
   color white
+  @media screen and (max-width: 768px)
+    flex-direction column
+    position static
+    height auto
+    box-shadow none
+    border-radius 0
 .forcast-info
   display flex
   align-items center
@@ -211,7 +233,15 @@ export default {
   left 3rem
   width 4rem
   height 4rem
+  @media screen and (max-width: 768px)
+    position fixed
+    width 3rem
+    height 3rem
+    top 50%
+    left 10%
   p
     margin-top 0.5rem
     color white
+    @media screen and (max-width: 768px)
+      color black
 </style>

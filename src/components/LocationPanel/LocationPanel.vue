@@ -2,7 +2,7 @@
  * @Author: pwjworks
  * @Date: 2020-02-08 02:46:54
  * @Last Modified by: pwjworks
- * @Last Modified time: 2020-02-11 21:23:34
+ * @Last Modified time: 2020-02-18 02:41:08
  */
 <template>
   <div class="location-content">
@@ -29,6 +29,9 @@ export default {
     left 60%
     width 18.75rem
     height 14rem
+    @media screen and (max-width: 768px)
+      position static
+      margin 5%
     p
       font-size 2rem
       &:before
