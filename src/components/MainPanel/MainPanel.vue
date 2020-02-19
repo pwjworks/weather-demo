@@ -2,7 +2,7 @@
  * @Author: pwjworks
  * @Date: 2020-02-08 02:47:10
  * @Last Modified by: pwjworks
- * @Last Modified time: 2020-02-19 00:28:38
+ * @Last Modified time: 2020-02-19 12:48:14
  */
 <template>
   <div class="container">
@@ -81,6 +81,7 @@ export default {
     this.__getWeatherData()
   },
   mounted () {
+    this.updateSidebarActive(false)
     this.show = true
     setTimeout(() => {
       this.arrowShow = true
@@ -170,7 +171,7 @@ export default {
         }
       }
     },
-    ...mapMutations(['addCity', 'addSubscriptionCity'])
+    ...mapMutations(['addCity', 'addSubscriptionCity', 'updateSidebarActive'])
   }
 }
 </script>

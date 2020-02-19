@@ -2,7 +2,7 @@
  * @Author: pwjworks
  * @Date: 2020-02-08 02:46:12
  * @Last Modified by: pwjworks
- * @Last Modified time: 2020-02-19 00:44:05
+ * @Last Modified time: 2020-02-19 12:50:13
  */
 
 <template>
@@ -160,9 +160,10 @@ export default {
         })
       }
     },
-    ...mapMutations(['addSubscriptionCity', 'addCity'])
+    ...mapMutations(['addSubscriptionCity', 'addCity', 'updateSidebarActive'])
   },
   mounted () {
+    this.updateSidebarActive(false)
     this.show = true
     setTimeout(() => {
       this.textShow = true

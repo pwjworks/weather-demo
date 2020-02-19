@@ -2,7 +2,7 @@
  * @Author: pwjworks
  * @Date: 2020-02-08 17:51:05
  * @Last Modified by: pwjworks
- * @Last Modified time: 2020-02-15 21:40:00
+ * @Last Modified time: 2020-02-19 12:49:46
  */
 <template>
   <div class="inner-container">
@@ -25,7 +25,7 @@
 <script type="text/ecmascript-6">
 import CityCard from 'components/CityCard/CityCard.vue'
 import AddCityCard from 'components/AddCityCard/AddCityCard.vue'
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 
 export default {
   components: {
@@ -36,6 +36,12 @@ export default {
     ...mapState({
       subscriptionCity: state => state.subscriptionCity
     })
+  },
+  mounted () {
+    this.updateSidebarActive(false)
+  },
+  methods: {
+    ...mapMutations(['updateSidebarActive'])
   }
 }
 </script>
