@@ -7,7 +7,7 @@ const {
   bucket,
   accessKeyId,
   accessKeySecret
-} = cdnConfig.AliOSS
+} = cdnConfig
 const client = new OSS({
   region,
   bucket,

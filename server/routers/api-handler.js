@@ -7,7 +7,7 @@
 const axios = require('axios')
 const MD5 = require('js-md5')
 
-const baseURL = 'https://hn216.api.yesapi.cn/'
+const baseURL = 'http://hn216.api.yesapi.cn/'
 const request = axios.create({
   baseURL
 })
@@ -34,7 +34,7 @@ module.exports = (appSecret) => {
    * @param {*} data
    * @returns
    */
-  function urlHandler (data) {
+  function urlHandler(data) {
     let url
     let key
     for (var k in data) {
@@ -55,7 +55,7 @@ module.exports = (appSecret) => {
      * @param {*} data
      * @returns
      */
-    async getWeatherAPIResp (data) {
+    async getWeatherAPIResp(data) {
       return handleRequest(await request.get(urlHandler(data)))
     }
   }

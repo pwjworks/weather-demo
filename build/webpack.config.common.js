@@ -60,7 +60,7 @@ module.exports = {
   plugins: [
     new HTMLPlugin({
       template: path.resolve(__dirname, './template.html'),
-      faviconxx: path.resolve(__dirname,'../favicon.ico')
+      faviconxx: path.resolve(__dirname, '../favicon.ico')
     }),
     new VueLoaderPlugin(),
     new CleanWebpackPlugin(),

@@ -11,10 +11,10 @@ import Subscription from 'components/Subscription/Subscription.vue'
 export default [
   {
     path: '/',
-    redirect: '/app'
+    redirect: '/public'
   },
   {
-    path: '/app',
+    path: '/public',
     component: MainPanel
   },
   {
