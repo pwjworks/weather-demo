@@ -1,20 +1,20 @@
 const OSS = require('ali-oss')
 const fs = require('fs')
 const path = require('path')
-const cdnConfig = require('../app.config.js').AliOSS
+const cdnConfig = require('../app.config.js')
 const {
   region,
   bucket,
   accessKeyId,
   accessKeySecret
-} = cdnConfig
+} = cdnConfig.AliOSS
 const client = new OSS({
   region,
   bucket,
   accessKeyId,
   accessKeySecret
 })
-async function doUpload (objectName, localFile) {
+async function doUpload(objectName, localFile) {
   try {
     const result = await client.put(objectName, localFile)
     console.log(result)

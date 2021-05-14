@@ -2,7 +2,7 @@ const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const baseConfig = require('./webpack.config.common')
 const merge = require('webpack-merge')
-const cdnConfig = require('../app.config.js').AliOSS
+const cdnConfig = require('../app.config.js')
 
 module.exports = merge(baseConfig, {
   mode: 'production',
@@ -33,14 +33,14 @@ module.exports = merge(baseConfig, {
           hmr: process.env.NODE_ENV === 'development'
         }
       },
-      'css-loader',
+        'css-loader',
       {
         loader: 'postcss-loader',
         options: {
           sourceMap: true
         }
       },
-      'stylus-loader'
+        'stylus-loader'
       ]
     }
     ]

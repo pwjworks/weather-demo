@@ -4,4 +4,4 @@ apps:
   env_production:
     NODE_ENV:production
     HOST:localhost
-    PORT:7788
+    PORT:3333

@@ -29,6 +29,7 @@
   "devDependencies": {
     "@babel/cli": "^7.8.3",
     "@babel/core": "^7.8.3",
+    "@babel/helper-compilation-targets": "^7.13.16",
     "@babel/preset-env": "^7.8.3",
     "ali-oss": "^6.5.1",
     "autoprefixer": "^9.7.4",
